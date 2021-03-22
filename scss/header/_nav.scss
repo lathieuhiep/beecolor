@@ -3,7 +3,7 @@
   background-color: $background-primary;
 
   &__right {
-    @include flex(0 0 auto);
+    @include flex(1);
 
     &--search {
       max-width: 210px;
