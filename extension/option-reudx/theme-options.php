@@ -122,7 +122,7 @@ $beecolor_opt_args = array(
         ),
     )
 );
-Redux::setArgs( $beecolor_opt_name, $beecolor_opt_args );
+Redux::set_args( $beecolor_opt_name, $beecolor_opt_args );
 /*
  * ---> END ARGUMENTS
  */
@@ -143,11 +143,11 @@ $beecolor_opt_tabs = array(
         'content'   =>  esc_html__( '<p>This is the tab content, HTML is allowed.</p>', 'beecolor' )
     )
 );
-Redux::setHelpTab( $beecolor_opt_name, $beecolor_opt_tabs );
+Redux::set_help_tab( $beecolor_opt_name, $beecolor_opt_tabs );
 
 // Set the help sidebar
 $beecolor_opt_content = esc_html__( '<p>This is the sidebar content, HTML is allowed.</p>', 'beecolor' );
-Redux::setHelpSidebar( $beecolor_opt_name, $beecolor_opt_content );
+Redux::set_help_sidebar( $beecolor_opt_name, $beecolor_opt_content );
 
 
 /*
@@ -162,7 +162,7 @@ Redux::setHelpSidebar( $beecolor_opt_name, $beecolor_opt_content );
 
 // -> START option background
 
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'id'                =>   'beecolor_theme_option',
     'title'             =>   $beecolor_theme->get( 'Name' ).' '.$beecolor_theme->get( 'Version' ),
     'customizer_width'  =>   '400px',
@@ -173,7 +173,7 @@ Redux::setSection( $beecolor_opt_name, array(
 
 /* Start General Options */
 
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'General Options', 'beecolor' ),
     'id'                =>  'beecolor_general',
     'desc'              =>  esc_html__( 'General all config', 'beecolor' ),
@@ -182,7 +182,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 // Favicon Config
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Favicon', 'beecolor' ),
     'id'            =>  'beecolor_favicon_config',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -201,7 +201,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 //Loading config
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Loading config', 'beecolor' ),
     'id'            =>  'beecolor_general_loading',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -226,7 +226,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 //Background Options
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Background', 'beecolor' ),
     'id'                =>  'beecolor_background',
     'desc'              =>  esc_html__( 'Background all config', 'beecolor' ),
@@ -250,7 +250,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End General Options */
 
 /* Start Header Options */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Header Options', 'beecolor' ),
     'id'                =>  'beecolor_header',
     'desc'              =>  esc_html__( 'Header all config', 'beecolor' ),
@@ -259,7 +259,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 //Logo Config
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Logo', 'beecolor' ),
     'id'            =>  'beecolor_logo_config',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -305,7 +305,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 // information
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Information', 'beecolor' ),
     'id'            =>  'beecolor_information_config',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -350,7 +350,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End Header Options */
 
 /* Start Blog Option */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Blog Options', 'beecolor' ),
     'id'                =>  'beecolor_blog_option',
     'customizer_width'  =>  '400px',
@@ -397,7 +397,7 @@ Redux::setSection( $beecolor_opt_name, array(
     )
 ));
 
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
 	'title'         =>  esc_html__( 'Single Post', 'beecolor' ),
 	'id'            =>  'beecolor_single_post_option',
 	'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -451,7 +451,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End Blog Option */
 
 /* Start Social Network */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Social Network', 'beecolor' ),
     'id'                =>  'beecolor_social_network',
     'customizer_width'  =>  '400px',
@@ -466,23 +466,16 @@ Redux::setSection( $beecolor_opt_name, array(
         ),
 
         array(
+            'id'        =>  'beecolor_social_network_google',
+            'type'      =>  'text',
+            'title'     =>  esc_html__( 'Google', 'beecolor' ),
+            'default'   =>  '#',
+        ),
+
+        array(
             'id'        =>  'beecolor_social_network_youtube',
             'type'      =>  'text',
             'title'     =>  esc_html__( 'Youtube', 'beecolor' ),
-            'default'   =>  '#',
-        ),
-
-        array(
-            'id'        =>  'beecolor_social_network_twitter',
-            'type'      =>  'text',
-            'title'     =>  esc_html__( 'Twitter', 'beecolor' ),
-            'default'   =>  '#',
-        ),
-
-        array(
-            'id'        =>  'beecolor_social_network_instagram',
-            'type'      =>  'text',
-            'title'     =>  esc_html__( 'Instagram', 'beecolor' ),
             'default'   =>  '#',
         ),
 
@@ -491,7 +484,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End Social Network */
 
 /* Start Shop */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Shop', 'beecolor' ),
     'id'                =>  'beecolor_shop_woo',
     'desc'              =>  esc_html__( 'Settings WooCommerce', 'beecolor' ),
@@ -539,7 +532,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End Shop */
 
 /* Start Typography Options */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Typography', 'beecolor' ),
     'id'                =>  'beecolor_typography',
     'desc'              =>  esc_html__( 'Typography all config', 'beecolor' ),
@@ -548,7 +541,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 // Body font
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Body Typography', 'beecolor' ),
     'id'            =>  'beecolor_body_typography',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -582,7 +575,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 // Header font
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Custom Typography', 'beecolor' ),
     'id'            =>  'beecolor_custom_typography',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -665,7 +658,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End Typography Options */
 
 /* Start 404 Options */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( '404 Options', 'beecolor' ),
     'id'                =>  'beecolor_404',
     'desc'              =>  esc_html__( '404 page all config', 'beecolor' ),
@@ -707,7 +700,7 @@ Redux::setSection( $beecolor_opt_name, array(
 /* End 404 Options */
 
 /* Start Footer Options */
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Footer Options', 'beecolor' ),
     'id'                =>  'beecolor_footer',
     'desc'              =>  esc_html__( 'Footer all config', 'beecolor' ),
@@ -716,7 +709,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 // Footer Sidebar Multi Column
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Sidebar Footer Multi Column', 'beecolor' ),
     'id'            =>  'beecolor_footer_sidebar_multi_column',
     'subsection'    =>  true,
@@ -831,7 +824,7 @@ Redux::setSection( $beecolor_opt_name, array(
 ));
 
 //Copyright
-Redux::setSection( $beecolor_opt_name, array(
+Redux::set_section( $beecolor_opt_name, array(
     'title'         =>  esc_html__( 'Copyright', 'beecolor' ),
     'id'            =>  'beecolor_footer_copyright',
     'desc'          =>  esc_html__( '', 'beecolor' ),
@@ -861,8 +854,6 @@ Redux::setSection( $beecolor_opt_name, array(
  * <--- END SECTIONS
  */
 
-// Function to test the compiler hook and demo CSS output.
-add_filter('redux/options/' . $beecolor_opt_name . '/compiler', 'compiler_action', 10, 3);
 
 /**
  * This is a test function that will let you see when the compiler hook occurs.

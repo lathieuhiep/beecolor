@@ -296,11 +296,9 @@ function beecolor_get_social_url() {
 function beecolor_get_social_network() {
     return array(
 
-        array( 'id' =>  'facebook', 'icon'  =>  'fab fa-facebook-f'),
-        array( 'id' =>  'youtube', 'icon'   =>  'fab fa-youtube'),
-        array( 'id' =>  'twitter', 'icon'   =>  'fab fa-twitter'),
-        array( 'id' =>  'instagram', 'icon' =>  'fab fa-instagram'),
-
+        array( 'id' =>  'facebook', 'icon'  =>  'fab fa-facebook-square'),
+        array( 'id' =>  'google', 'icon'   =>  'fab fa-google-plus-square'),
+        array( 'id' =>  'youtube', 'icon'   =>  'fab fa-youtube-square'),
     );
 }
 /* End Social Network */

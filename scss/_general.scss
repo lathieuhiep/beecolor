@@ -134,26 +134,18 @@ pre {
 /* Social network */
 .social-network-item {
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 12px;
 
   &:last-child {
     margin-right: 0;
   }
   a {
     display: block;
-    color: #ffffff;
-  }
-  &.item-facebook {
-    background-color: #3b5998;
-  }
-  &.item-twitter {
-    background-color: #1da1f2;
-  }
-  &.item-youtube {
-    background-color: #cd201f;
-  }
-  &.item-instagram {
-    background-color: #e4405f;
+    font-size: 28px;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 }
 .social-network-toTopFromBottom {
