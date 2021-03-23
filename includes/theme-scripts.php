@@ -16,7 +16,7 @@ if ( ! function_exists( 'beecolor_fonts_url' ) ) :
 			$beecolor_font_families = array();
 
 			if ( 'off' !== $beecolor_font_google ) {
-				$beecolor_font_families[] = 'Roboto:400,700';
+				$beecolor_font_families[] = 'Roboto:400,500,700';
 			}
 
 			$beecolor_query_args = array(

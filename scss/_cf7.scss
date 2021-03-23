@@ -1,5 +1,8 @@
 form {
   &.wpcf7-form {
+    br {
+      display: none;
+    }
     p {
       position: relative;
       margin: 0;
@@ -13,8 +16,8 @@ form {
     }
     label {
       display: block;
-      margin-bottom: 15px;
-      font-weight: 500;
+      color: $color-second;
+      margin-bottom: 0.5rem;
     }
     span {
       &.required {
@@ -30,12 +33,11 @@ form {
           width: 100%;
           display: block;
           border: 1px solid #e9ebed;
-          background-color: #f8f8f8;
-          padding: 4px 12px;
-          color: #202020;
+          padding: 8px 12px;
+          color: $color-second;
 
           &:focus {
-            border-color: #ff335f;
+            border-color: $border-color-primary;
           }
         }
         textarea {
@@ -44,12 +46,14 @@ form {
       }
     }
     .wpcf7-submit {
-      color: #fff;
-      padding: 5px 25px;
+      color: $color-title;
+      font-weight: 700;
+      padding: 5px 35px;
       border: none;
       cursor: pointer;
       text-transform: uppercase;
       background: $background-primary;
+      border-radius: 6px;
     }
   }
 }

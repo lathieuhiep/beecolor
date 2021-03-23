@@ -266,7 +266,15 @@ pre {
 /* Breadcrumbs */
 .breadcrumbs {
   .breadcrumbs-col {
-    padding: 15px 0;
-    border-bottom: 1px solid #eeeeee;
+    padding: 30px 0;
+
+    span {
+      font-weight: 500;
+      font-size: 15px;
+
+      .current-item {
+        color: $color-hover;
+      }
+    }
   }
 }
