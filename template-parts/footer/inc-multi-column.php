@@ -12,39 +12,37 @@ if( is_active_sidebar( 'beecolor-sidebar-footer-multi-column-1' ) || is_active_s
 
 ?>
 
-    <div class="site-footer__multi--column">
-        <div class="container">
-            <div class="row">
-                <?php
-                for( $i = 0; $i < $multi_column; $i++ ):
+    <div class="container">
+        <div class="row">
+            <?php
+            for( $i = 0; $i < $multi_column; $i++ ):
 
-                    $j = $i +1;
+                $j = $i +1;
 
-                    if ( $i == 0 ) :
-                        $beecolor_col = $multi_column_l;
-                    elseif ( $i == 1 ) :
-                        $beecolor_col = $multi_column_2;
-                    elseif ( $i == 2 ) :
-                        $beecolor_col = $multi_column_3;
-                    else :
-                        $beecolor_col = $multi_column_4;
-                    endif;
+                if ( $i == 0 ) :
+                    $beecolor_col = $multi_column_l;
+                elseif ( $i == 1 ) :
+                    $beecolor_col = $multi_column_2;
+                elseif ( $i == 2 ) :
+                    $beecolor_col = $multi_column_3;
+                else :
+                    $beecolor_col = $multi_column_4;
+                endif;
 
-                    if( is_active_sidebar( 'beecolor-sidebar-footer-multi-column-'.$j ) ):
-                ?>
+                if( is_active_sidebar( 'beecolor-sidebar-footer-multi-column-'.$j ) ):
+            ?>
 
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-<?php echo esc_attr( $beecolor_col ); ?>">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-<?php echo esc_attr( $beecolor_col ); ?>">
 
-                        <?php dynamic_sidebar( 'beecolor-sidebar-footer-multi-column-'.$j ); ?>
+                    <?php dynamic_sidebar( 'beecolor-sidebar-footer-multi-column-'.$j ); ?>
 
-                    </div>
+                </div>
 
-                <?php
-                    endif;
+            <?php
+                endif;
 
-                endfor;
-                ?>
-            </div>
+            endfor;
+            ?>
         </div>
     </div>
 
