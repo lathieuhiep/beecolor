@@ -7,11 +7,12 @@ $beecolor_blog_sidebar_single = !empty( $beecolor_options['beecolor_blog_sidebar
 
 $beecolor_class_col_content = beecolor_col_use_sidebar( $beecolor_blog_sidebar_single, 'beecolor-sidebar-main' );
 
-get_template_part( 'template-parts/breadcrumbs/inc', 'breadcrumbs' );
 ?>
 
 <div class="site-container site-single">
     <div class="container">
+        <?php get_template_part( 'template-parts/breadcrumbs/inc', 'breadcrumbs' ); ?>
+
         <div class="row">
             <div class="<?php echo esc_attr( $beecolor_class_col_content ); ?>">
 

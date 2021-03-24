@@ -23,9 +23,12 @@ if ( !empty( $beecolor_term_cat_post ) ):
 ?>
 
     <div class="site-single-post-related">
-        <h3 class="title">
-            <?php esc_html_e( 'Related Post', 'beecolor' ); ?>
-        </h3>
+        <div class="related-top d-flex align-items-center">
+            <h3 class="title flex-grow-0">
+		        <?php esc_html_e( 'Liên quan', 'beecolor' ); ?>
+            </h3>
+            <span class="line flex-grow-1"></span>
+        </div>
 
         <div class="row">
             <?php
@@ -36,7 +39,7 @@ if ( !empty( $beecolor_term_cat_post ) ):
                 <div class="col-12 col-sm-6 col-md-4 item">
                     <div class="related-post-item">
                         <figure class="post-image">
-                            <?php the_post_thumbnail( 'medium' ); ?>
+                            <?php the_post_thumbnail( 'large' ); ?>
                         </figure>
 
                         <h4 class="title-post">
@@ -45,17 +48,7 @@ if ( !empty( $beecolor_term_cat_post ) ):
                             </a>
                         </h4>
 
-                        <div class="excerpt-post">
-                            <p>
-                                <?php
-                                if( has_excerpt() ) :
-                                    echo wp_trim_words( get_the_excerpt(), 15, '...' );
-                                else:
-                                    echo wp_trim_words( get_the_content(), 15, '...' );
-                                endif;
-                                ?>
-                            </p>
-                        </div>
+	                    <?php beecolor_post_meta(); ?>
                     </div>
                 </div>
 

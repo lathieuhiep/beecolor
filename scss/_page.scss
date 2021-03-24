@@ -1,8 +1,11 @@
 .site-container {
-  padding: 50px 0;
+  padding: 3rem 0;
 
   &.site-container-elementor {
     padding: 0;
+  }
+  .breadcrumbs-col {
+    padding-top: 0 ;
   }
 }
 .site-page-content {

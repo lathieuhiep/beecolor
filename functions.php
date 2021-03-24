@@ -388,23 +388,8 @@ function beecolor_post_meta() {
 ?>
 
     <div class="site-post-meta">
-        <span class="site-post-author">
-            <?php esc_html_e( 'Author:','beecolor' ); ?>
-
-            <a href="<?php echo get_author_posts_url( get_the_author_meta('ID') );?>">
-                <?php the_author();?>
-            </a>
-        </span>
-
-        <span class="site-post-date">
-            <?php esc_html_e( 'Post date: ','beecolor' ); the_date(); ?>
-        </span>
-
-        <span class="site-post-comments">
-            <?php
-            comments_popup_link( '0 '. esc_html__('Comment','beecolor'),'1 '. esc_html__('Comment','beecolor'), '% '. esc_html__('Comments','beecolor') );
-            ?>
-        </span>
+        <i class="fas fa-calendar-alt"></i>
+        <span><?php echo get_the_date(); ?></span>
     </div>
 
 <?php

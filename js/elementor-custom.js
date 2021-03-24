@@ -17,6 +17,9 @@
         /* Element post carousel */
         elementorFrontend.hooks.addAction( 'frontend/element_ready/beecolor-post-carousel.default', ElementCarouselSlider );
 
+        /* Element partners-carousel */
+        elementorFrontend.hooks.addAction( 'frontend/element_ready/beecolor-partners-carousel.default', ElementCarouselSlider );
+
     } );
 
 })( jQuery );

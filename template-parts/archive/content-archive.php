@@ -10,6 +10,8 @@ $beecolor_blog_per_row            =   $beecolor_options['beecolor_blog_per_row']
 
 <div class="site-container site-blog">
     <div class="container">
+        <?php get_template_part( 'template-parts/breadcrumbs/inc', 'breadcrumbs' ); ?>
+
         <div class="row">
             <div class="<?php echo esc_attr( $beecolor_class_col_content ); ?>">
                 <div class="site-post-content">

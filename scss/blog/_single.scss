@@ -7,10 +7,13 @@
     margin-bottom: 15px;
   }
   .site-post-excerpt {
-    margin-bottom: 15px;
+    margin-bottom: 2rem;
   }
 }
 .site-post-single-item {
+  .site-post-title {
+    font-size: 30px;
+  }
   .site-post-meta {
     margin-bottom: 15px;
   }
@@ -84,23 +87,41 @@
   margin-bottom: 30px;
 }
 .site-single-post-related {
-  .title {
-    position: relative;
-    font-size: 18px;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
+  .related-top {
+    margin-bottom: 2rem;
 
-    &:after {
-      position: absolute;
-      content: "";
-      left: 0;
-      bottom: 0;
-      width: 30px;
+    .title {
+      font-size: 24px;
+      margin: 0 0.5rem 0 0;
+    }
+    .line {
       height: 1px;
-      background-color: $background-hover;
+      background-color: $border-color;
     }
   }
   .item {
     margin-bottom: 15px;
+    @include flexbox();
+    @include flex-direction(column);
+  }
+  .related-post-item {
+    @include flexbox();
+    @include flex-direction(column);
+    @include flex(1);
+
+    .post-image {
+      height: 240px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .title-post {
+      @include flex(1);
+    }
   }
 }

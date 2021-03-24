@@ -6,9 +6,9 @@ html {
 }
 body {
   min-height: 100vh;
-  line-height: 1.5em;
+  line-height: 1.6em;
   overflow-x: hidden;
-  font-size: 14px;
+  font-size: 15px;
   color: $color-primary;
   font-family: $font-family-text;
   font-weight: $font-weight-regular;
@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 15px;
   font-weight: $font-weight-bold;
   color: $color-title;
+  line-height: 1.4em;
 }
 h1 {
   font-size: 36px;
