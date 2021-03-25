@@ -113,6 +113,11 @@ foreach(glob( get_parent_theme_file_path( '/extension/widgets/*.php' ) ) as $bee
 require get_parent_theme_file_path( '/includes/register-sidebar.php' );
 
 /**
+ * Required: Post type project
+ */
+require get_parent_theme_file_path( '/extension/post-type/project.php' );
+
+/**
  * Required: Theme Scripts
  */
 require get_parent_theme_file_path( '/includes/theme-scripts.php' );

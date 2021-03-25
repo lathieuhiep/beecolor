@@ -32,16 +32,26 @@ class beecolor_widget_post_grid extends Widget_Base {
             ]
         );
 
+	    $this->add_control(
+		    'title',
+		    [
+			    'label' => esc_html__( 'Title', 'beecolor' ),
+			    'type' => Controls_Manager::TEXT,
+			    'default' => esc_html__( 'Default title', 'beecolor' ),
+			    'label_block'   =>  true
+		    ]
+	    );
+
         $this->add_control(
             'select_cat',
             [
                 'label'         =>  esc_html__( 'Select Category', 'beecolor' ),
-                'type'          =>  Controls_Manager::SELECT2,
+                'type'          =>  Controls_Manager::SELECT,
                 'options'       =>  beecolor_check_get_cat( 'category' ),
-                'multiple'      =>  true,
                 'label_block'   =>  true
             ]
         );
+
 
         $this->add_control(
             'limit',
@@ -109,43 +119,16 @@ class beecolor_widget_post_grid extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Image_Size::get_type(),
-            [
-                'name'      =>  'thumbnail',
-                'exclude'   =>  [ 'custom' ],
-                'default'   =>  'medium_large',
-            ]
-        );
-
         $this->add_control(
-            'show_excerpt',
+            'type_style',
             [
-                'label'     =>  esc_html__( 'Show excerpt', 'beecolor' ),
-                'type'      =>  Controls_Manager::CHOOSE,
-                'options'   =>  [
-                    '1' => [
-                        'title' =>  esc_html__( 'Yes', 'beecolor' ),
-                        'icon'  =>  'fa fa-check',
-                    ],
-                    '0' => [
-                        'title' =>  esc_html__( 'No', 'beecolor' ),
-                        'icon'  =>  'fa fa-ban',
-                    ]
-                ],
-                'default' => '1'
-            ]
-        );
-
-        $this->add_control(
-            'excerpt_length',
-            [
-                'label'     =>  esc_html__( 'Excerpt Words', 'beecolor' ),
-                'type'      =>  Controls_Manager::NUMBER,
-                'default'   =>  '10',
-                'condition' =>  [
-                    'show_excerpt' => '1',
-                ],
+	            'label'     =>  esc_html__( 'Type Style', 'beecolor' ),
+	            'type'      =>  Controls_Manager::SELECT,
+	            'default'   =>  1,
+	            'options'   =>  [
+		            2   =>  esc_html__( 'First Post', 'beecolor' ),
+		            1   =>  esc_html__( 'Default', 'beecolor' ),
+	            ],
             ]
         );
 
@@ -330,48 +313,96 @@ class beecolor_widget_post_grid extends Widget_Base {
         $query = new \ WP_Query( $args );
 
         if ( $query->have_posts() ) :
-
+	        $postCount = 0;
         ?>
 
             <div class="element-post-grid">
+                <?php if ( $settings['title'] ) : ?>
+                    <div class="heading d-flex align-items-center">
+                        <h2 class="title-top flex-grow-0">
+                            <?php echo esc_html( $settings['title'] ); ?>
+                        </h2>
+                        <span class="line flex-grow-1"></span>
+                    </div>
+                <?php endif; ?>
+
                 <div class="row">
-                    <?php while ( $query->have_posts() ): $query->the_post(); ?>
+                    <?php
+                    while ( $query->have_posts() ):
+                        $query->the_post();
+	                    $postCount++;
 
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-<?php echo esc_attr( 12 / $settings['column_number'] ); ?>">
-                            <div class="item-post">
-                                <div class="item-post__thumbnail">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php if ( has_post_thumbnail() ) : ?>
+	                    if ( $settings['type_style'] == 2 && $postCount == 1 ) {
+	                        $column_number = 'col-12';
+                        } else {
+		                    $column_number = 'col-sm-6 col-md-4 col-lg-' . 12 / $settings['column_number'];
+                        }
+                    ?>
 
-                                            <img src="<?php echo esc_url( Group_Control_Image_Size::get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'thumbnail', $settings ) ); ?>" alt="<?php the_title(); ?>">
+                        <div class="<?php echo esc_attr( $column_number ); ?> item-col">
+                            <div class="item-post<?php echo $settings['type_style'] == 1 || $postCount > 1 ? ' custom-style' : ''  ?>">
+                                <?php if ( $settings['type_style'] == 2 && $postCount == 1 ) : ?>
 
-                                        <?php else: ?>
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="item-post__thumbnail">
+                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                                    <?php
+                                                    if ( has_post_thumbnail() ) :
+                                                        the_post_thumbnail('large');
+                                                    else:
+                                                    ?>
+                                                        <img src="<?php echo esc_url( get_theme_file_uri( '/images/no-image.png' ) ) ?>" alt="<?php the_title(); ?>" />
+                                                    <?php endif; ?>
+                                                </a>
+                                            </div>
+                                        </div>
 
-                                            <img src="<?php echo esc_url( get_theme_file_uri( '/images/no-image.png' ) ) ?>" alt="<?php the_title(); ?>" />
+                                        <div class="col-12 col-md-6">
+                                            <h2 class="item-post__title">
+                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                                    <?php the_title(); ?>
+                                                </a>
+                                            </h2>
 
-                                        <?php endif; ?>
-                                    </a>
-                                </div>
+                                            <?php beecolor_post_meta(); ?>
 
-                                <h2 class="item-post__title">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php the_title(); ?>
-                                    </a>
-                                </h2>
-
-                                <?php if ( $settings['show_excerpt'] == 1 ) : ?>
-
-                                    <div class="item-post__content">
-                                        <p>
-                                            <?php
-                                            if ( has_excerpt() ) :
-                                                echo esc_html( wp_trim_words( get_the_excerpt(), $settings['excerpt_length'], '...' ) );
-                                            else:
-                                                echo esc_html( wp_trim_words( get_the_content(), $settings['excerpt_length'], '...' ) );
-                                            endif;
-                                            ?>
-                                        </p>
+                                            <div class="item-post__content">
+                                                <p>
+                                                    <?php
+                                                    if ( has_excerpt() ) :
+                                                        echo esc_html( get_the_excerpt() );
+                                                    else:
+                                                        echo esc_html( wp_trim_words( get_the_content(), 110, '' ) );
+                                                    endif;
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                <?php else: ?>
+
+                                    <div class="item-post__thumbnail">
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+			                                <?php
+                                            if ( has_post_thumbnail() ) :
+                                                the_post_thumbnail('large');
+                                            else: ?>
+
+                                                <img src="<?php echo esc_url( get_theme_file_uri( '/images/no-image.png' ) ) ?>" alt="<?php the_title(); ?>" />
+
+			                                <?php endif; ?>
+                                        </a>
+                                    </div>
+
+                                    <h2 class="item-post__title">
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+			                                <?php the_title(); ?>
+                                        </a>
+                                    </h2>
+
+	                                <?php beecolor_post_meta(); ?>
 
                                 <?php endif; ?>
                             </div>

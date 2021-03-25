@@ -1,10 +1,25 @@
 .element-post-grid {
+  .heading {
+    margin-bottom: 1rem;
+
+    .title-top {
+      font-size: 24px;
+      margin: 0 0.5rem 0 0;
+    }
+    .line {
+      height: 1px;
+      background-color: $border-color;
+    }
+  }
   .title {
     text-align: center;
   }
+  .item-col {
+    margin-bottom: 1rem;
+    @include flexbox();
+    @include flex-direction(column);
+  }
   .item-post {
-    margin-bottom: 30px;
-
     .item-post__thumbnail {
       margin-bottom: 15px;
 
@@ -18,6 +33,15 @@
       p {
         margin: 0;
         font-size: 14px;
+      }
+    }
+    &.custom-style {
+      @include flexbox();
+      @include flex-direction(column);
+      @include flex(1);
+
+      .item-post__title {
+        @include flex(1);
       }
     }
   }
