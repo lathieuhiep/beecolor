@@ -24,10 +24,17 @@ Text Domain: beecolor
   ## Pagination
   ## Comment
 # Elementor
+  ## About Text
   ## Slider
   ## Posts Grid
   ## Posts Carousel
   ## Partners Carousel
+# Woocommerce
+  ## Archive shop
+  ## Single Shop
+  ## Other Page Shop
+  ## Sidebar Shop
+  ## Quick View Product
 # Contact Form 7
 # Footer
 # Responsive
@@ -69,6 +76,11 @@ Text Domain: beecolor
 # Elementor
 -----------------------------------------------------------------------------*/
 @import "elementor/elementor";
+
+/**
+# Woocommerce
+-----------------------------------------------------------------------------*/
+@import "shop/shop";
 
 /**
 # Contact Form 7

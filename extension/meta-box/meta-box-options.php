@@ -7,27 +7,20 @@ function beecolor_register_meta_boxes() {
     /* Start meta box post */
     $beecolor_meta_boxes[] = array(
         'id'         => 'post_format_option',
-        'title'      => esc_html__( 'Post Format', 'beecolor' ),
-        'post_types' => array( 'post' ),
+        'title'      => esc_html__( 'Tư vấn thi công', 'beecolor' ),
+        'post_types' => array( 'product' ),
         'context'    => 'normal',
-        'priority'   => 'high',
+        'priority'   => 'low',
         'fields' => array(
 
             array(
-                'id'               => 'beecolor_gallery_post',
-                'name'             => 'Gallery',
-                'type'             => 'image_advanced',
-                'force_delete'     => false,
-                'max_status'       => false,
-                'image_size'       => 'thumbnail',
+                'id' => 'beecolor_product_construction_consultant',
+                'type' => 'wysiwyg',
+                'options' => array(
+	                'textarea_rows' => 10,
+	                'teeny' => true,
+                ),
             ),
-
-            array(
-                'id'            => 'beecolor_video_post',
-                'name'          => 'Video Or Audio',
-                'type'          => 'oembed',
-            ),
-
 
         )
     );

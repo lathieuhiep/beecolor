@@ -11,11 +11,11 @@ class beecolor_widget_about_text extends Widget_Base {
     }
 
     public function get_name() {
-        return 'beecolor-about-text';
+        return 'beecolor-about-title';
     }
 
     public function get_title() {
-        return esc_html__( 'About Text', 'beecolor' );
+        return esc_html__( 'About Title', 'beecolor' );
     }
 
     public function get_icon() {
@@ -27,7 +27,7 @@ class beecolor_widget_about_text extends Widget_Base {
         $this->start_controls_section(
             'section_content',
             [
-                'label' => esc_html__( 'Text', 'beecolor' ),
+                'label' => esc_html__( 'Heading', 'beecolor' ),
             ]
         );
 
@@ -36,130 +36,8 @@ class beecolor_widget_about_text extends Widget_Base {
             [
                 'label'         =>  esc_html__( 'Title', 'beecolor' ),
                 'type'          =>  Controls_Manager::TEXT,
-                'default'       =>  esc_html__( 'Title About Text', 'beecolor' ),
+                'default'       =>  esc_html__( 'Title', 'beecolor' ),
                 'label_block'   =>  true
-            ]
-        );
-
-        $this->add_control(
-            'icon',
-            [
-                'label'     =>  esc_html__( 'Icon', 'beecolor' ),
-                'type'      =>  Controls_Manager::ICON,
-                'default'   =>  [
-                    'value'     =>  'fas fa-star',
-                    'library'   =>  'solid',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'section_text_editor',
-            [
-                'label' => esc_html__( 'Text Editor', 'beecolor' ),
-            ]
-        );
-
-        $this->add_control(
-            'widget_description',
-            [
-                'label'     =>  esc_html__( 'Description', 'beecolor' ),
-                'type'      =>  Controls_Manager::WYSIWYG,
-                'default'   =>  esc_html__( 'Default description', 'beecolor' ),
-            ]
-        );
-
-        $this->end_controls_section();
-
-        /*STYLE TAB*/
-        $this->start_controls_section('style', array(
-            'label' =>  esc_html__( 'Text', 'beecolor' ),
-            'tab'   =>  Controls_Manager::TAB_STYLE,
-        ));
-
-        $this->add_control(
-            'align',
-            [
-                'label'     =>  esc_html__( 'Alignment Title', 'beecolor' ),
-                'type'      =>  Controls_Manager::CHOOSE,
-                'options'   =>  [
-                    'left'  =>  [
-                        'title' =>  esc_html__( 'Left', 'beecolor' ),
-                        'icon'  =>  'fa fa-align-left',
-                    ],
-
-                    'center'    =>  [
-                        'title' =>  esc_html__( 'Center', 'beecolor' ),
-                        'icon'  =>  'fa fa-align-center',
-                    ],
-                    'right' => [
-                        'title' =>  esc_html__( 'Right', 'beecolor' ),
-                        'icon'  =>  'fa fa-align-right',
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-about-text' => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_color',
-            [
-                'label'     =>  __( 'Title Color', 'beecolor' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-about-text__title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'text_editor_color',
-            [
-                'label'     =>  __( 'Text Editor Color', 'beecolor' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-about-text__description' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'hide_line',
-            [
-                'label'     =>  esc_html__( 'Hide Line', 'beecolor' ),
-                'type'      =>  Controls_Manager::SELECT,
-                'default'   =>  'no',
-                'options'   =>  [
-                    'no'    =>  esc_html__( 'No', 'beecolor' ),
-                    'yes'   =>  esc_html__( 'Yes', 'beecolor' ),
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'margin_bottom_line',
-            [
-                'label'     =>  esc_html__( 'Margin Bottom Line', 'beecolor' ),
-                'type'      =>  Controls_Manager::SLIDER,
-                'default'   =>  [
-                    'size'  =>  '',
-                ],
-                'range'     =>  [
-                    'px'    =>  [
-                        'min'   =>  10,
-                        'max'   =>  600,
-                    ],
-                ],
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-about-text__line' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                ],
-                'condition'     =>  [
-                    'hide_line' =>  'no',
-                ],
             ]
         );
 
@@ -169,32 +47,16 @@ class beecolor_widget_about_text extends Widget_Base {
 
     protected function render() {
 
-        $settings       =   $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
 
         ?>
 
-        <div class="element-about-text">
-            <h2 class="element-about-text__title">
+        <div class="element-about-text d-flex align-items-center">
+            <h2 class="element-about-text__title flex-grow-0">
                 <?php echo wp_kses_post( $settings['widget_title'] ); ?>
             </h2>
 
-            <div class="icon">
-                <?php Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-            </div>
-
-            <?php if ( $settings['hide_line'] == 'no' ) : ?>
-
-                <span class="element-about-text__line">&nbsp;</span>
-
-            <?php endif; ?>
-
-            <?php if ( !empty( $settings['widget_description'] ) ) : ?>
-
-                <div class="element-about-text__description">
-                    <?php echo wp_kses_post( $settings['widget_description'] ); ?>
-                </div>
-
-            <?php endif; ?>
+            <span class="element-about-text__line flex-grow-1">&nbsp;</span>
         </div>
 
         <?php
@@ -213,23 +75,7 @@ class beecolor_widget_about_text extends Widget_Base {
                 {{{ settings.widget_title }}}
             </h2>
 
-            <div class="icon">
-                {{{ iconHTML.value }}}
-            </div>
-
-            <# if ( settings.hide_line == 0 ) {#>
-
             <span class="element-about-text__line">&nbsp;</span>
-
-            <# } #>
-
-            <# if ( '' !== settings.widget_description ) {#>
-
-            <div class="element-about-text__description">
-                {{{ settings.widget_description }}}
-            </div>
-
-            <# } #>
         </div>
 
         <?php
