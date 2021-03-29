@@ -442,5 +442,6 @@
   bottom: -18px;
   left: 50%;
   z-index: 1;
+  width: 100%;
   @include transform(translateX(-50%));
 }

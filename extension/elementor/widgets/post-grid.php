@@ -344,7 +344,7 @@ class beecolor_widget_post_grid extends Widget_Base {
                                 <?php if ( $settings['type_style'] == 2 && $postCount == 1 ) : ?>
 
                                     <div class="row">
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-12 col-lg-6">
                                             <div class="item-post__thumbnail">
                                                 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                                     <?php
@@ -358,7 +358,7 @@ class beecolor_widget_post_grid extends Widget_Base {
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-12 col-lg-6">
                                             <h2 class="item-post__title">
                                                 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                                                     <?php the_title(); ?>
