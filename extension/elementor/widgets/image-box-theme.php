@@ -76,6 +76,45 @@ class beecolor_widget_image_box_theme extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'background_overlay',
+			[
+				'label' => esc_html__( 'Background Overlay', 'beecolor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'separator' => 'before',
+				'conditions' => [
+					'terms' => [
+						[
+							'name' => 'background_image[url]',
+							'operator' => '!=',
+							'value' => '',
+						],
+					],
+				],
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_color',
+			[
+				'label' => esc_html__( 'Color', 'beecolor' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => 'rgba(0,0,0,0.5)',
+				'conditions' => [
+					'terms' => [
+						[
+							'name' => 'background_overlay',
+							'value' => 'yes',
+						],
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .element-image-box-theme .box .overlay' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 	}
@@ -88,16 +127,20 @@ class beecolor_widget_image_box_theme extends Widget_Base {
 	?>
 
 		<div class="element-image-box-theme">
+            <a class="link" href="<?php echo esc_url( $settings['link']['url'] ); ?>" <?php echo $target . $nofollow ?>></a>
+
 			<div class="box d-flex align-items-center justify-content-center">
+                <?php if ( $settings['background_overlay'] == 'yes' ) : ?>
+                    <div class="overlay"></div>
+                <?php endif; ?>
+
 				<div class="image">
 					<?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
 				</div>
 			</div>
 
             <h2 class="title">
-                <a href="<?php echo esc_url( $settings['link']['url'] ); ?>" <?php echo $target . $nofollow ?>>
-	                <?php echo wp_kses_post( $settings['widget_title'] ); ?>
-                </a>
+                <?php echo wp_kses_post( $settings['widget_title'] ); ?>
             </h2>
 		</div>
 

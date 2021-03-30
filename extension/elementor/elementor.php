@@ -56,7 +56,8 @@ final class beecolor_plugin_elementor_widgets {
             'breadcrumb-navxt',
 	        'partners-carousel',
 	        'feature-project',
-	        'image-box-theme'
+	        'image-box-theme',
+	        'image-box-theme-2'
         ];
         
         foreach ( $build_widgets_filename as $widget_filename ) :
