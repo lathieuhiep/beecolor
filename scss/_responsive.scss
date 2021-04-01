@@ -220,25 +220,6 @@
 
 }
 
-@media ( min-width: 768px ) {
-
-  .element-image-box-theme-v2 {
-    &:hover {
-      border-radius: 8px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-
-      .image-box {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-      .box-content {
-        padding-top: 1rem;
-      }
-    }
-  }
-
-}
-
 @media ( min-width: 768px ) and ( max-width: 991px ) {
 
   .recent_posts_thumbs_widget_list .recent_posts_thumbs_widget_item,
@@ -279,19 +260,8 @@
     padding-top: 50px;
   }
   .element-image-box-theme-v2 {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.3);
-
-    .image-box {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
     .box-content {
-      padding: 30px;
-    }
-    &:hover {
-      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+      padding-top: 30px;
     }
   }
   /* woocommerce */

@@ -22,6 +22,7 @@
   .item-post {
     .item-post__thumbnail {
       margin-bottom: 15px;
+      @include transition(all 0.4s ease-in-out);
 
       a {
         display: block;
@@ -45,6 +46,11 @@
 
       .item-post__title {
         @include flex(1);
+      }
+      &:hover {
+        .item-post__thumbnail {
+          box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+        }
       }
     }
   }

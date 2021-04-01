@@ -151,6 +151,7 @@ if ( ! function_exists( 'beecolor_woo_before_main_content' ) ) :
 
         <div class="site-container site-shop">
             <div class="container">
+	            <?php get_template_part( 'template-parts/breadcrumbs/inc', 'breadcrumbs' ); ?>
                 <div class="row">
 
                 <?php

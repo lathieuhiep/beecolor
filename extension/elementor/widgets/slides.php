@@ -973,6 +973,7 @@ class beecolor_widget_slides extends Widget_Base {
 
 	    $data_settings_owl  =   [
 		    'items'     =>  1,
+            'autoplaySpeed' => 2000,
 		    'loop'      =>  ( 'yes' === $settings['loop'] ),
 		    'autoplay'  =>  ( 'yes' === $settings['autoplay'] ),
 		    'nav'       =>  ( 'yes' === $settings['nav'] ),
