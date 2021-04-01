@@ -1,7 +1,11 @@
 .site-header {
   padding: 1.75rem 0 0.5rem;
   background-color: $background-primary;
+  @include transition(all 0.4s ease-out);
 
+  &.header-boxShadow {
+    box-shadow: 0 3px 5px #888888;
+  }
   &__right {
     @include flex(1);
 

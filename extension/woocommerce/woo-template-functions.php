@@ -545,3 +545,9 @@ function woo_new_product_tab_content( $beecolor_content ) {
 
     echo $beecolor_product_construction_consultant;
 }
+
+// To change add to cart text on product archives(Collection) page
+add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );
+function woocommerce_custom_product_add_to_cart_text() {
+	return __( 'Chi tiết', 'woocommerce' );
+}

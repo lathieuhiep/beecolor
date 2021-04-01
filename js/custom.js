@@ -67,12 +67,19 @@
 
         timer_clear = setTimeout( function() {
 
-            /* Start scroll back top */
-            let $scrollTop = $(this).scrollTop();
+            let scrollTop = $(this).scrollTop(),
+                siteHeader = $('.site-header');
 
-            if ( $scrollTop > 200 ) {
+            if ( scrollTop > siteHeader.innerHeight() ) {
+                siteHeader.addClass('header-boxShadow');
+            } else {
+                siteHeader.removeClass('header-boxShadow');
+            }
+
+            /* Start scroll back top */
+            if ( scrollTop > 200 ) {
                 $('#back-top').addClass('active_top');
-            }else {
+            } else {
                 $('#back-top').removeClass('active_top');
             }
             /* End scroll back top */

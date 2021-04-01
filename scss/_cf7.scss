@@ -54,6 +54,12 @@ form {
       text-transform: uppercase;
       background: $background-primary;
       border-radius: 6px;
+      @include transition(all 0.4s ease-out);
+
+      &:hover {
+        color: $background-primary;
+        background-color: $color-title;
+      }
     }
   }
 }

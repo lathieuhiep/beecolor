@@ -70,9 +70,12 @@
       color: $color-title;
       font-weight: 500;
       background-color: $background-primary;
+      @include transition(all 0.4s ease-out);
 
       &:hover {
         text-decoration: none;
+        color: $background-primary;
+        background-color: $color-title;
       }
     }
   }
