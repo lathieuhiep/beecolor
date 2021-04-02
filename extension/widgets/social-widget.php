@@ -40,7 +40,7 @@ class beecolor_social_widget extends WP_Widget {
 
     ?>
 		
-        <div class="social-widget social-network-toTopFromBottom">
+        <div class="social-widget">
             <?php beecolor_get_social_url(); ?>
         </div>
 
