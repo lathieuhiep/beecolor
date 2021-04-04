@@ -62,19 +62,19 @@
     });
 
     $( window ).scroll( function() {
+        let scrollTop = $(this).scrollTop();
+
+        let siteHeader = $('.site-header');
+
+        if ( scrollTop > siteHeader.innerHeight() ) {
+            siteHeader.addClass('header-boxShadow');
+        } else {
+            siteHeader.removeClass('header-boxShadow');
+        }
 
         if ( timer_clear ) clearTimeout(timer_clear);
 
         timer_clear = setTimeout( function() {
-
-            let scrollTop = $(this).scrollTop(),
-                siteHeader = $('.site-header');
-
-            if ( scrollTop > siteHeader.innerHeight() ) {
-                siteHeader.addClass('header-boxShadow');
-            } else {
-                siteHeader.removeClass('header-boxShadow');
-            }
 
             /* Start scroll back top */
             if ( scrollTop > 200 ) {

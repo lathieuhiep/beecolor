@@ -16,7 +16,6 @@ form {
     }
     label {
       display: block;
-      color: $color-second;
       margin-bottom: 0.5rem;
     }
     span {
@@ -34,7 +33,6 @@ form {
           display: block;
           border: 1px solid #e9ebed;
           padding: 8px 12px;
-          color: $color-second;
 
           &:focus {
             border-color: $border-color-primary;

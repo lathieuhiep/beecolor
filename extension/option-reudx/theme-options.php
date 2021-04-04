@@ -823,28 +823,44 @@ Redux::set_section( $beecolor_opt_name, array(
 
 ));
 
-//Copyright
+// Copyright
 Redux::set_section( $beecolor_opt_name, array(
-    'title'         =>  esc_html__( 'Copyright', 'beecolor' ),
-    'id'            =>  'beecolor_footer_copyright',
-    'desc'          =>  esc_html__( '', 'beecolor' ),
-    'subsection'    =>  true,
-    'fields'        =>  array(
-        array(
-            'id'            =>  'beecolor_footer_copyright_editor',
-            'type'          =>  'editor',
-            'title'         =>  esc_html__( 'Enter content copyright', 'beecolor' ),
-            'full_width'    =>  true,
-            'default'       =>  'Copyright &amp; DiepLK',
-            'args'          =>  array(
-                'wpautop'       => false,
-                'media_buttons' => false,
-                'textarea_rows' => 10,
-                'teeny'         => false,
-                'quicktags'     => true,
-            )
-        ),
-    )
+	'title'         =>  esc_html__( 'Copyright', 'beecolor' ),
+	'id'            =>  'beecolor_footer_copyright',
+	'desc'          =>  esc_html__( '', 'beecolor' ),
+	'subsection'    =>  true,
+	'fields'        =>  array(
+		array(
+			'id'            =>  'beecolor_footer_copyright_editor',
+			'type'          =>  'editor',
+			'title'         =>  esc_html__( 'Enter content copyright', 'beecolor' ),
+			'full_width'    =>  true,
+			'default'       =>  'Copyright &amp; DiepLK',
+			'args'          =>  array(
+				'wpautop'       => false,
+				'media_buttons' => false,
+				'textarea_rows' => 10,
+				'teeny'         => false,
+				'quicktags'     => true,
+			)
+		),
+	)
+));
+
+// Script
+Redux::set_section( $beecolor_opt_name, array(
+	'title'         =>  esc_html__( 'Script ', 'beecolor' ),
+	'id'            =>  'beecolor_footer_script',
+	'desc'          =>  esc_html__( '', 'beecolor' ),
+	'subsection'    =>  true,
+	'fields'        =>  array(
+		array(
+			'id'            =>  'beecolor_footer_script',
+			'type'          =>  'textarea',
+			'title'         =>  esc_html__( 'Enter Script', 'beecolor' ),
+			'default'       =>  '',
+		),
+	)
 ));
 
 /* End Footer Options */

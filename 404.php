@@ -30,7 +30,7 @@ $beecolor_background = $beecolor_options['beecolor_404_background']['id'];
                     if ( $beecolor_title != '' ):
                         echo esc_html( $beecolor_title );
                     else:
-                        esc_html_e( 'Awww...Do Not Cry', 'beecolor' );
+                        esc_html_e( 'Awww...Đừng buồn', 'beecolor' );
                     endif;
                     ?>
                 </h1>
@@ -42,18 +42,16 @@ $beecolor_background = $beecolor_options['beecolor_404_background']['id'];
                     else:
                     ?>
                         <p>
-                            <?php esc_html_e( 'It is just a 404 Error!', 'beecolor' ); ?>
+                            <?php esc_html_e( 'Nó chỉ là một lỗi 404!', 'beecolor' ); ?>
                             <br />
-                            <?php esc_html_e( 'What you are looking for may have been misplaced', 'beecolor' ); ?>
-                            <br />
-                            <?php esc_html_e( 'in Long Term Memory.', 'beecolor' ); ?>
+                            <?php esc_html_e( 'Những gì bạn đang tìm kiếm có thể đã không còn tồn tại', 'beecolor' ); ?>
                         </p>
                     <?php endif; ?>
                 </div>
 
                 <div id="site-error-back-home">
-                    <a href="<?php echo esc_url( get_home_url('/') ); ?>" title="<?php echo esc_html__('Go to the Home Page', 'beecolor'); ?>">
-                        <?php esc_html_e('Go to the Home Page', 'beecolor'); ?>
+                    <a href="<?php echo esc_url( get_home_url('/') ); ?>" title="<?php echo esc_html__('Quay về trang chủ', 'beecolor'); ?>">
+                        <?php esc_html_e('Quay về trang chủ', 'beecolor'); ?>
                     </a>
                 </div>
             </div>

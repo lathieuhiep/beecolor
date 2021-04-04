@@ -291,7 +291,7 @@ function beecolor_get_social_url() {
 ?>
 
         <div class="social-network-item item-<?php echo esc_attr( $beecolor_social['id'] ); ?>">
-            <a href="<?php echo esc_url( $beecolor_social_url ); ?>">
+            <a href="<?php echo esc_url( $beecolor_social_url ); ?>" target="_blank">
                 <i class="<?php echo esc_attr( $beecolor_social['icon'] ); ?>" aria-hidden="true"></i>
             </a>
         </div>
@@ -466,11 +466,9 @@ function beecolor_check_get_cat( $type_taxonomy ) {
 function beecolor_post_share() {
 
 ?>
-
     <div class="site-post-share">
         <div class="fb-like" data-href="<?php the_permalink(); ?>" data-width="" data-layout="button_count" data-share="true" data-action="like" data-size="small"></div>
     </div>
-
 <?php
 
 }
@@ -520,20 +518,34 @@ add_action( 'wp_head', 'beecolor_opengraph', 5 );
 
 /* Start Facebook SDK */
 function beecolor_facebook_sdk() {
+	global $beecolor_options;
 
-	if ( is_single() ) :
+	$beecolor_footer_script = $beecolor_options['beecolor_footer_script'];
 
+	if (  !empty( $beecolor_footer_script ) ) :
+        echo force_balance_tags( $beecolor_footer_script );
+    else:
 ?>
 
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
 
 <?php
-
 	endif;
-
 }
 
 add_action( 'wp_footer', 'beecolor_facebook_sdk' );
-
 /* End share */
+
+/**
+ * This function modifies the main WordPress query to include an array of
+ * post types instead of the default 'post' post type.
+ *
+ * @param object $query The main WordPress query.
+ */
+function beecolor_include_custom_post_types_in_search_results( $query ) {
+	if ( $query->is_main_query() && $query->is_search() && ! is_admin() ) {
+		$query->set( 'post_type', array( 'post', 'product' ) );
+	}
+}
+add_action( 'pre_get_posts', 'beecolor_include_custom_post_types_in_search_results' );

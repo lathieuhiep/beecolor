@@ -112,7 +112,7 @@ pre {
   bottom: 0;
   cursor: pointer;
   position: fixed;
-  right: 15px;
+  right: 110px;
   z-index: 1000;
   @include transition(all 400ms ease-in-out);
 
@@ -126,7 +126,6 @@ pre {
   }
   &.active_top {
     opacity: 1;
-    bottom: 15px;
   }
   &:hover {
     background-color: $background-primary;

@@ -326,13 +326,14 @@
               padding: 10px 15px;
               border-radius: 0;
               background-color: #323232;
+              @include transition();
 
               &::before,
               &::after {
                 display: none;
               }
               &.active {
-                background-color: #ff5555;
+                background-color: $background-primary;
 
                 a {
                   color: #ffffff;
@@ -343,6 +344,13 @@
                 font-size: 15px;
                 font-weight: 400;
                 color: #ffffff;
+              }
+              &:hover {
+                background-color: $background-primary;
+
+                a {
+                  color: #ffffff;
+                }
               }
             }
           }
