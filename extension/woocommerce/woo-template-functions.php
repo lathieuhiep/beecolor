@@ -19,12 +19,15 @@ function beecolor_shop_setup() {
 add_filter('woocommerce_show_page_title', '__return_false');
 
 function beecolor_price_override( $price, $product ) {
+	global $beecolor_options;
+	$beecolor_products_link_contact = $beecolor_options['beecolor_products_link_contact'];
+
 	if ( empty( $product->get_price() ) ) {
 		/*
 		 * Replace the word "Free" with whatever text you would like. Also
 		 * remember to update the textdomain for translation if required.
 		 */
-		$price = __( 'Liên hệ', 'beecolor' );
+		$price = '<a href="'. esc_url( $beecolor_products_link_contact ) .'">'. __( 'Liên hệ', 'beecolor' ) .'</a>';
 	}
 
 	return $price;
@@ -519,6 +522,7 @@ add_filter( 'woocommerce_product_tabs', 'woo_rename_tabs', 98 );
 function woo_rename_tabs( $tabs ) {
 
 	$tabs['description']['title'] = esc_html__( 'Thông số kỹ thuật', 'beecolor' );
+	$tabs['description']['priority'] = 10;
 //	$tabs['additional_information']['title'] = esc_html__( 'Product Data' );
 
 	return $tabs;
@@ -531,9 +535,15 @@ function woo_rename_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 
 function woo_new_product_tab( $tabs ) {
+	$tabs['tab_color'] = array(
+		'title' 	=> __( 'Bảng màu', 'beecolor' ),
+		'priority' 	=> 5,
+		'callback' 	=> 'woo_new_product_tab_content_color'
+	);
+
 	$tabs['test_tab'] = array(
 		'title' 	=> __( 'Tư vấn thi công', 'beecolor' ),
-		'priority' 	=> 50,
+		'priority' 	=> 15,
 		'callback' 	=> 'woo_new_product_tab_content'
 	);
 
@@ -544,6 +554,12 @@ function woo_new_product_tab_content( $beecolor_content ) {
     $beecolor_product_construction_consultant = rwmb_meta( 'beecolor_product_construction_consultant' );
 
     echo $beecolor_product_construction_consultant;
+}
+
+function woo_new_product_tab_content_color( $beecolor_content ) {
+    $beecolor_product_table_color = rwmb_meta( 'beecolor_product_table_color' );
+
+    echo $beecolor_product_table_color;
 }
 
 // To change add to cart text on product archives(Collection) page

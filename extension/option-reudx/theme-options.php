@@ -527,6 +527,13 @@ Redux::set_section( $beecolor_opt_name, array(
                 'hide'  =>  'Hide',
             )
         ),
+
+	    array(
+		    'id'        =>  'beecolor_products_link_contact',
+		    'type'      =>  'text',
+		    'title'     =>  esc_html__( 'Link liên hệ', 'beecolor' ),
+		    'default'   =>  '#',
+	    ),
     )
 ));
 /* End Shop */
