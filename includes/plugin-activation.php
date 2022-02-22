@@ -2,7 +2,6 @@
 /**
  * Include the TGM_Plugin_Activation class.
  */
-require get_parent_theme_file_path( '/plugins/class-tgm-plugin-activation.php' );
 
 add_action( 'tgmpa_register', 'beecolor_register_required_plugins' );
 function beecolor_register_required_plugins() {
@@ -26,6 +25,13 @@ function beecolor_register_required_plugins() {
 			'slug'      =>  'meta-box',
 			'required'  =>  true,
 		),
+
+        // This is an example of how to include a plugin from the WordPress Plugin Repository
+        array(
+            'name'      =>  'CMB2',
+            'slug'      =>  'cmb2',
+            'required'  =>  true,
+        ),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
 		array(

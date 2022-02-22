@@ -9,7 +9,7 @@ $beecolor_logo_image_id    =   $beecolor_options['beecolor_logo_image']['id'];
         if ( !empty( $beecolor_logo_image_id ) ) :
             echo wp_get_attachment_image( $beecolor_logo_image_id, 'full' );
         else :
-            echo'<img class="logo-default" src="'.esc_url( get_theme_file_uri( '/images/logo.png' ) ).'" alt="'.get_bloginfo('title').'" />';
+            echo'<img class="logo-default" src="'.esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ).'" alt="'.get_bloginfo('title').'" />';
         endif;
         ?>
     </a>
