@@ -70,7 +70,7 @@ final class beecolor_plugin_elementor_widgets {
     }
 
     public function init_script() {
-        wp_register_script( 'beecolor-elementor-custom', get_theme_file_uri( '/js/elementor-custom.js' ), array(), '1.0.0', true );
+        wp_register_script( 'beecolor-elementor-custom', get_theme_file_uri( '/assets/js/elementor-custom.js' ), array(), '1.0.0', true );
     }
 
 }

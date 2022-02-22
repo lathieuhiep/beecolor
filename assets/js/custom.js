@@ -14,12 +14,8 @@
 
         /* Start back top */
         $('#back-top').on( 'click', function (e) {
-
             e.preventDefault();
-            $( 'html, body' ).animate( {
-                scrollTop: 0
-            }, 700 );
-
+            $('html').scrollTop(0);
         } );
         /* End back top */
 

@@ -47,14 +47,6 @@ if( !function_exists('beecolor_setup') ):
         // add theme support title-tag
         add_theme_support( 'title-tag' );
 
-        /*  Post Type   */
-        add_theme_support( 'post-formats', array( 'gallery', 'video', 'audio' ) );
-
-        /*
-	    * This theme styles the visual editor to resemble the theme style,
-	    * specifically font, colors, icons, and column width.
-	    */
-        add_editor_style( array( 'css/editor-style.css', beecolor_fonts_url()) );
     }
 
     add_action( 'after_setup_theme', 'beecolor_setup' );
@@ -64,6 +56,7 @@ endif;
 /**
  * Required: Plugin Activation
  */
+require get_parent_theme_file_path( '/includes/class-tgm-plugin-activation.php' );
 require get_parent_theme_file_path( '/includes/plugin-activation.php' );
 
 /**
@@ -111,7 +104,6 @@ if ( class_exists('Woocommerce') ) :
 	/*
 	 * Required: Woocommerce
 	 */
-//	require get_parent_theme_file_path( '/extension/woocommerce/woo-quick-view.php' );
 	require get_parent_theme_file_path( '/extension/woocommerce/woo-template-hooks.php' );
 	require get_parent_theme_file_path( '/extension/woocommerce/woo-template-functions.php' );
 
@@ -489,7 +481,7 @@ function beecolor_opengraph() {
 		if( has_post_thumbnail( $post->ID ) ) :
 			$img_src = get_the_post_thumbnail_url( get_the_ID(),'full' );
 		else :
-			$img_src = get_theme_file_uri( '/images/no-image.png' );
+			$img_src = get_theme_file_uri( '/assets/images/no-image.png' );
 		endif;
 
 		if( $excerpt = $post->post_excerpt ) :

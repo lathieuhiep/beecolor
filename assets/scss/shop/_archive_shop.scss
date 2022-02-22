@@ -220,7 +220,7 @@
           .price {
             color: $background-second;
             font-size: 14px;
-            font-weight: $font-weight-bold;
+            font-weight: 700;
 
             del {
               display: inline-block;
@@ -239,7 +239,7 @@
             border: none;
             color: #ffffff;
             font-size: 12px;
-            font-weight: $font-weight-regular;
+            font-weight: 400;
             background-color: $background-primary;
 
             &.add_to_cart_button {
