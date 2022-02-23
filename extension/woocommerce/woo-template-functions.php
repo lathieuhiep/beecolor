@@ -509,8 +509,9 @@ add_filter('woocommerce_product_description_heading', '__return_false');
  */
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 
+// Remove the reviews tab
 function woo_remove_product_tabs( $tabs ) {
-	unset( $tabs['reviews'] ); 			// Remove the reviews tab
+	unset( $tabs['reviews'] );
 
 	return $tabs;
 }
@@ -536,13 +537,13 @@ add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 
 function woo_new_product_tab( $tabs ) {
 	$tabs['tab_color'] = array(
-		'title' 	=> __( 'Bảng màu', 'beecolor' ),
+		'title' 	=> esc_html__( 'Bảng màu', 'beecolor' ),
 		'priority' 	=> 5,
 		'callback' 	=> 'woo_new_product_tab_content_color'
 	);
 
 	$tabs['test_tab'] = array(
-		'title' 	=> __( 'Tư vấn thi công', 'beecolor' ),
+		'title' 	=> esc_html__( 'Tư vấn thi công', 'beecolor' ),
 		'priority' 	=> 15,
 		'callback' 	=> 'woo_new_product_tab_content'
 	);
@@ -551,13 +552,13 @@ function woo_new_product_tab( $tabs ) {
 }
 
 function woo_new_product_tab_content( $beecolor_content ) {
-    $beecolor_product_construction_consultant = rwmb_meta( 'beecolor_product_construction_consultant' );
+    $beecolor_product_construction_consultant = wp_kses_post( get_post_meta( get_the_ID(), 'beecolor_product_construction_consultant', true ) );
 
     echo $beecolor_product_construction_consultant;
 }
 
 function woo_new_product_tab_content_color( $beecolor_content ) {
-    $beecolor_product_table_color = rwmb_meta( 'beecolor_product_table_color' );
+    $beecolor_product_table_color = wp_kses_post( get_post_meta( get_the_ID(), 'beecolor_product_table_color', true ) );
 
     echo $beecolor_product_table_color;
 }

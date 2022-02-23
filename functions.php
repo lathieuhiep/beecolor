@@ -53,6 +53,9 @@ if( !function_exists('beecolor_setup') ):
 
 endif;
 
+// Required: post type
+require get_parent_theme_file_path( '/extension/post-type/warranty.php' );
+
 /**
  * Required: Plugin Activation
  */
@@ -71,25 +74,11 @@ if ( class_exists( 'ReduxFramework' ) ) {
     require get_parent_theme_file_path( '/extension/option-reudx/theme-options.php' );
 }
 
-if ( class_exists( 'RW_Meta_Box' ) ) {
-    /*
-     * Required: Meta Box Framework
-     */
-    require get_parent_theme_file_path( '/extension/meta-box/meta-box-options.php' );
-
-}
-
-if ( ! function_exists( 'rwmb_meta' ) ) {
-
-    function rwmb_meta( $key, $args = '', $post_id = null ) {
-        return false;
-    }
-
-}
-
 // Required: CMB2
 if ( !class_exists('CMB2') ) {
-    require get_parent_theme_file_path( '/extension/meta-box/cmb2.php' );
+    require get_parent_theme_file_path( '/extension/meta-box/cmb_add_field_type.php' );
+    require get_parent_theme_file_path( '/extension/meta-box/cmb_product.php' );
+    require get_parent_theme_file_path( '/extension/meta-box/cmb_warranty.php' );
 }
 
 // Required: Elementor
