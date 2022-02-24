@@ -415,6 +415,32 @@ Redux::set_section( $beecolor_opt_name, array(
 ));
 /* End Shop */
 
+// warranty
+Redux::set_section( $beecolor_opt_name, array(
+    'title'             =>  esc_html__( 'Bảo hảnh', 'beecolor' ),
+    'id'                =>  'beecolor_opt_warranty',
+    'customizer_width'  =>  '400px',
+    'icon'              =>  'el el-shopping-cart',
+    'fields'            =>  array(
+
+        array(
+            'id'        =>  'beecolor_opt_warranty_desc',
+            'type'      =>  'editor',
+            'title'     =>  esc_html__( 'Điều kiện bảo hành', 'beecolor' ),
+            'default'   =>  '',
+            'args'          =>  array(
+                'wpautop'       => false,
+                'media_buttons' => false,
+                'textarea_rows' => 16,
+                'teeny'         => false,
+                'quicktags'     => true,
+            )
+        ),
+
+    )
+));
+
+
 /* Start Typography Options */
 Redux::set_section( $beecolor_opt_name, array(
     'title'             =>  esc_html__( 'Typography', 'beecolor' ),

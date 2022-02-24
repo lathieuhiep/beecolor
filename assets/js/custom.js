@@ -49,6 +49,19 @@
         $( document ).general_owlCarousel_custom( '.site-post-slides' );
         /* End Gallery Single */
 
+        // warranty conditions
+        const warrantyConditions = $('.site-warranty__conditions');
+        if ( warrantyConditions.length ) {
+            const h = warrantyConditions[0].scrollHeight;
+
+            $('.more-info-warranty').on('click', function (e) {
+                e.preventDefault();
+
+                $(this).addClass('d-none');
+                warrantyConditions.animate({'height': h});
+            })
+        }
+
     });
 
     $( window ).on( "load", function() {
