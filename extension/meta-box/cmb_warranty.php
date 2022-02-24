@@ -122,4 +122,85 @@ function beecolor_warranty_metaboxes() {
         'type' => 'textarea_small'
     ) );
 
+    // Product
+    $cmb_product = new_cmb2_box( array(
+        'id'            => 'beecolor_warranty_product',
+        'title'         => esc_html__( 'Thông tin sản phẩm', 'beecolor' ),
+        'object_types'  => array( 'warranty', ),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true,
+    ) );
+
+    $group_product_field_id = $cmb_product->add_field( array(
+        'id'          => 'beecolor_warranty_product_repeat_group',
+        'type'        => 'group',
+        'options'     => array(
+            'group_title'       => esc_html__( 'Sản phẩm {#}', 'beecolor' ),
+            'add_button'        => esc_html__( 'Thêm sản phẩm', 'beecolor' ),
+            'remove_button'     => esc_html__( 'Xoá', 'beecolor' ),
+            'sortable'          => true,
+             'closed'         => true,
+        ),
+    ) );
+
+    $cmb_product->add_group_field( $group_product_field_id, array(
+        'name'       => esc_html__( 'Tên sản phẩm', 'beecolor' ),
+        'id'         => 'beecolor_warranty_product_name',
+        'type'       => 'text',
+        'attributes'  => array(
+            'required'    => 'required',
+        ),
+    ) );
+
+    $cmb_product->add_group_field( $group_product_field_id, array(
+        'name'       => esc_html__( 'Mã màu', 'beecolor' ),
+        'id'         => 'beecolor_warranty_product_color',
+        'type'       => 'text',
+    ) );
+
+    $cmb_product->add_group_field( $group_product_field_id, array(
+        'name'       => esc_html__( 'Số lượng', 'beecolor' ),
+        'id'         => 'beecolor_warranty_product_amount',
+        'type'       => 'text',
+        'default'   => 1,
+        'attributes' => array(
+            'type' => 'number',
+            'min'  => '1',
+        ),
+    ) );
+
+    $cmb_product->add_group_field( $group_product_field_id, array(
+        'name' => esc_html__( 'Ngày bắt đầu bảo hành', 'beecolor' ),
+        'id'   => 'beecolor_warranty_product_start_date',
+        'type' => 'text_date',
+    ) );
+
+    $cmb_product->add_group_field( $group_product_field_id, array(
+        'name' => esc_html__( 'Ngày kết thúc bảo hành', 'beecolor' ),
+        'id'   => 'beecolor_warranty_product_end_date',
+        'type' => 'text_date',
+    ) );
+
+    $cmb_product->add_field( array(
+        'name'    => esc_html__( 'Hình ảnh', 'beecolor' ),
+        'desc'    => 'Upload an image or enter an URL.',
+        'id'      => 'beecolor_warranty_product_image',
+        'type'    => 'file_list',
+        'text' => array(
+            'add_upload_files_text' => 'Replacement', // default: "Add or Upload Files"
+            'remove_image_text' => 'Replacement', // default: "Remove Image"
+            'file_text' => 'Replacement', // default: "File:"
+            'file_download_text' => 'Replacement', // default: "Download"
+            'remove_text' => 'Replacement', // default: "Remove"
+        ),
+    ) );
+
+    $cmb_product->add_field( array(
+        'name' => esc_html__( 'Video', 'beecolor' ),
+        'id'   => 'beecolor_warranty_product_video',
+        'desc' => esc_html__('Nhập link youtube, twitter, hoặc instagram', 'beecolor'),
+        'type' => 'oembed',
+    ) );
+
 }
