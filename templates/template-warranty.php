@@ -8,6 +8,8 @@ get_header();
 global $beecolor_options;
 
 $desc = $beecolor_options['beecolor_opt_warranty_desc'];
+
+$key_search = $_GET['s'];
 ?>
 
 <div class="site-warranty">
@@ -19,13 +21,13 @@ $desc = $beecolor_options['beecolor_opt_warranty_desc'];
                 </h3>
 
                 <div class="form-warranty">
-                    <form method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <form method="get" class="search-form" action="<?php echo site_url('/'); ?>">
                         <label for="search-warranty">
                             <?php esc_html_e('Nhập số điện thoại hoặc mã đơn hàng', 'beecolor'); ?>
                         </label>
 
-                        <input type="search" id="search-warranty" class="form-control" value="" name="s" />
-                        <input type="hidden" name="post_type" value="warranty">
+                        <input type="search" id="search-warranty" class="form-control" value="" name="phone_or_code" />
+                        <input type="hidden" name="post_type" value="warranty" />
 
                         <div class="action-box text-center">
                             <button type="submit" class="search-submit">
