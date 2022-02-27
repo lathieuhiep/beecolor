@@ -41,6 +41,7 @@ gulp.task('compress-js', function () {
     return gulp.src( [
         './node_modules/bootstrap/dist/js/bootstrap.bundle.js',
         './node_modules/owl.carousel/dist/owl.carousel.js',
+        './node_modules/lightslider/dist/js/lightslider.js',
     ],  { allowEmpty: true } )
         .pipe(concat('library.min.js'))
         .pipe(uglify())

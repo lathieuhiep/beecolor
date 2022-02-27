@@ -532,3 +532,45 @@ function beecolor_include_custom_post_types_in_search_results( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'beecolor_include_custom_post_types_in_search_results' );
+
+// load ajax video / image warranty
+add_action( 'wp_ajax_nopriv_beecolor_warranty_load_video_image', 'beecolor_warranty_load_video_image' );
+add_action( 'wp_ajax_beecolor_warranty_load_video_image', 'beecolor_warranty_load_video_image' );
+
+function beecolor_warranty_load_video_image() {
+    $id = (int) $_POST['id'];
+
+    $args = array(
+        'post_type' => 'warranty',
+        'post__in' => array($id),
+    );
+
+    $query = new WP_Query( $args );
+
+    if ( $query->have_posts() ):
+        while ( $query->have_posts() ):
+            $query->the_post();
+
+            $video = get_post_meta( get_the_ID(), 'beecolor_warranty_product_video', true );
+            $image_gallery = get_post_meta( get_the_ID(), 'beecolor_warranty_product_image', true );
+            if ( $video ) :
+                echo wp_oembed_get( $video );
+            else:
+    ?>
+
+            <ul id="imageGallery">
+                <?php foreach ( $image_gallery as $item ) : ?>
+                    <li data-thumb="<?php echo esc_url( $item ) ?>">
+                        <img src="<?php echo esc_url( $item ) ?>" alt="" />
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+    <?php
+            endif;
+        endwhile;
+        wp_reset_postdata();
+    endif;
+
+    wp_die();
+}

@@ -58,6 +58,14 @@ function beecolor_register_front_end() {
 
 	wp_enqueue_script( 'beecolor-custom', get_theme_file_uri( '/assets/js/custom.js' ), array(), '1.0.0', true );
 
+    if ( is_page_template( 'templates/template-warranty.php' ) ) {
+        wp_enqueue_script( 'warranty-page', get_theme_file_uri( '/assets/js/load-warranty.js' ), array('jquery'), '', true );
+
+        $beecolor_warranty_page_admin_url = admin_url( 'admin-ajax.php' );
+        $beecolor_warranty_page_get_post = array( 'url' => $beecolor_warranty_page_admin_url );
+        wp_localize_script( 'warranty-page', 'warranty_page', $beecolor_warranty_page_get_post );
+    }
+
 	/*
    * End Get Js Front End
    * */
