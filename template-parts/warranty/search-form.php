@@ -4,7 +4,7 @@ $current_url = get_permalink( $obj_id );
 ?>
 
 <div class="row">
-    <div class="col-12 col-sm-6 col-md-4">
+    <div class="col-12 col-sm-6 col-md-5 col-lg-4">
         <h3 class="title">
             <?php esc_html_e('Kiểm tra bảo hành', 'beecolor'); ?>
         </h3>
@@ -26,7 +26,7 @@ $current_url = get_permalink( $obj_id );
         </div>
     </div>
 
-    <div class="col-12 col-sm-6 col-md-7 offset-md-1">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-7 offset-md-1">
         <?php get_template_part( 'template-parts/warranty/conditions', '' ); ?>
     </div>
 </div>

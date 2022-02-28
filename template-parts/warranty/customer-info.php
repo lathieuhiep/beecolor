@@ -31,7 +31,7 @@
         </div>
 
         <div class="item">
-            <div class="row row-col-1 row-cols-md-3">
+            <div class="row row-cols-1 row-cols-md-3">
                 <div class="col">
                     <p class="label">
                         <?php esc_html_e('CMND/CCCD', 'beecolor'); ?>

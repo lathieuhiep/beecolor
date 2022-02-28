@@ -8,7 +8,7 @@ if ( isset( $args ) ) :
             <?php esc_html_e('Hình ảnh / Video theo mã hợp đồng', 'beecolor'); ?>
         </h5>
 
-        <div class="row row-cols-1 row-cols-sm-2">
+        <div class="row row-cols-1 row-cols-md-2">
             <div class="col">
                 <h5 content="title-select">
                     <?php esc_html_e('Mã hợp đồng', 'beecolor'); ?>

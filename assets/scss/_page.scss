@@ -139,6 +139,10 @@
   }
 
   .contract-list {
+    .table-contract {
+      overflow-x: auto;
+    }
+
     table {
       text-align: center;
       margin-bottom: 0;

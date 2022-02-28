@@ -33,7 +33,7 @@
 
             $unique = array_unique( array_merge( $q1, $q2 ) );
 
-            if ( !empty( $unique ) ) {
+            if ( !empty( $unique ) ) :
 
                 // customer
                 $args_first = array(
@@ -42,14 +42,14 @@
                 );
                 $query_first = new WP_Query( $args_first );
 
-                if ( $query_first->have_posts() ) :
+                if ( $query_first->have_posts() ) {
                     while ( $query_first->have_posts() ) : $query_first->the_post();
 
                         get_template_part( 'template-parts/warranty/customer', 'info' );
 
                     endwhile;
                     wp_reset_postdata();
-                endif;
+                }
 
                 // contract list
                 $args_all = array(
@@ -59,11 +59,11 @@
 
                 $query_all = new WP_Query( $args_all );
 
-                if ( $query_all->have_posts() ) :
+                if ( $query_all->have_posts() ) {
                     get_template_part( 'template-parts/warranty/contract', 'list', array(
                         'query_all' => $query_all
                     ) );
-                endif;
+                }
 
                 // video or images
                 get_template_part( 'template-parts/warranty/video', 'image', array(
@@ -72,9 +72,19 @@
 
                 get_template_part('template-parts/warranty/conditions', '');
 
-            }
+            else:
 
-        else
+           ?>
+
+                <p>
+                    <?php esc_html_e('Không có thông tin bảo hành', 'beecolor'); ?>
+                </p>
+
+            <?php
+
+            endif;
+
+        else:
         ?>
 
             <p>
