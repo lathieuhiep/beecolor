@@ -417,10 +417,10 @@ Redux::set_section( $beecolor_opt_name, array(
 
 // warranty
 Redux::set_section( $beecolor_opt_name, array(
-    'title'             =>  esc_html__( 'Bảo hảnh', 'beecolor' ),
+    'title'             =>  esc_html__( 'Bảo hành', 'beecolor' ),
     'id'                =>  'beecolor_opt_warranty',
     'customizer_width'  =>  '400px',
-    'icon'              =>  'el el-shopping-cart',
+    'icon'              =>  'el el-book',
     'fields'            =>  array(
 
         array(
@@ -440,6 +440,30 @@ Redux::set_section( $beecolor_opt_name, array(
     )
 ));
 
+// Google reCAPTCHA
+Redux::set_section( $beecolor_opt_name, array(
+    'title'             =>  esc_html__( 'Google reCAPTCHA v2', 'beecolor' ),
+    'id'                =>  'beecolor_opt_google_reCAPTCHA',
+    'customizer_width'  =>  '400px',
+    'icon'              =>  'el el-repeat',
+    'fields'            =>  array(
+
+        array(
+            'id'        =>  'beecolor_opt_google_reCAPTCHA_site_key',
+            'type'      =>  'text',
+            'title'     =>  esc_html__( 'Site Key', 'beecolor' ),
+            'default'   =>  '',
+        ),
+
+        array(
+            'id'        =>  'beecolor_opt_google_reCAPTCHA_secret_key',
+            'type'      =>  'text',
+            'title'     =>  esc_html__( 'Secret Key', 'beecolor' ),
+            'default'   =>  '',
+        ),
+
+    )
+));
 
 /* Start Typography Options */
 Redux::set_section( $beecolor_opt_name, array(

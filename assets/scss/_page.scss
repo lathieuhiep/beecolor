@@ -28,6 +28,12 @@
     margin-bottom: 40px;
   }
 
+  .title-error {
+    font-size: 14px;
+    color: #FF0000;
+    margin-bottom: 4px;
+  }
+
   .form-warranty {
     form {
       label {
@@ -37,10 +43,20 @@
       }
 
       input {
-        padding: 24px 8px;
-        margin-bottom: 46px;
-        border-radius: 0;
-        border: 1px solid #c1c1c1;
+        &.form-control {
+          padding: 24px 8px;
+          margin-bottom: 30px;
+          border-radius: 0;
+          border: 1px solid #c1c1c1;
+        }
+      }
+
+      .g-recaptcha {
+        margin-bottom: 30px;
+
+        > div {
+          width: 100% !important;
+        }
       }
 
       .action-box {

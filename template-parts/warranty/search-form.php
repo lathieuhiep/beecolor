@@ -1,6 +1,8 @@
 <?php
-$obj_id = get_queried_object_id();
-$current_url = get_permalink( $obj_id );
+global $beecolor_options;
+
+$site_key = $beecolor_options['beecolor_opt_google_reCAPTCHA_site_key'];
+$secret_key = $beecolor_options['beecolor_opt_google_reCAPTCHA_secret_key'];
 ?>
 
 <div class="row">
@@ -9,6 +11,39 @@ $current_url = get_permalink( $obj_id );
             <?php esc_html_e('Kiểm tra bảo hành', 'beecolor'); ?>
         </h3>
 
+        <?php
+        if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) :
+            $phone_code = $_POST['phone-code'];
+            $captcha = $_POST['g-recaptcha-response'];
+
+            if ( !$phone_code ) {
+        ?>
+                <h5 class="title-error">
+                    <?php esc_html_e( 'Hãy nhập số điện thoại hoặc mã đơn hàng' , 'beecolor' ); ?>
+                </h5>
+        <?php
+            }
+
+            if( !$captcha ) {
+        ?>
+            <h5 class="title-error">
+                <?php esc_html_e( 'Hãy xác nhận CAPTCHA' , 'beecolor' ); ?>
+            </h5>
+        <?php
+            } else {
+                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret_key."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+
+                if( $response.success == false ) {
+            ?>
+                    <h5 class="title-error">
+                        <?php esc_html_e( 'SPAM!' , 'beecolor' ); ?>
+                    </h5>
+            <?php
+                }
+            }
+        endif;
+        ?>
+
         <div class="form-warranty">
             <form method="post" class="search-form" action="">
                 <label for="search-warranty">
@@ -16,6 +51,8 @@ $current_url = get_permalink( $obj_id );
                 </label>
 
                 <input type="search" id="search-warranty" class="form-control" value="" name="phone-code" />
+
+                <div class="g-recaptcha" data-sitekey="<?php echo esc_attr( $site_key ); ?>"></div>
 
                 <div class="action-box text-center">
                     <button type="submit" class="search-submit">

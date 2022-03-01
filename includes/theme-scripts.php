@@ -70,4 +70,15 @@ function beecolor_register_front_end() {
    * End Get Js Front End
    * */
 
+    // add script header
+    function beecolor_recaptcha() {
+        if ( is_page_template('templates/template-warranty.php') ) :
+    ?>
+        <script src="https://www.google.com/recaptcha/api.js?hl=vi" async defer></script>
+    <?php
+        endif;
+    }
+
+    add_action('wp_head', 'beecolor_recaptcha');
+
 }
