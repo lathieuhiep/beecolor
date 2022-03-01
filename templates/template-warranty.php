@@ -5,8 +5,7 @@ Template Name: Kiểm tra bảo hành
 
 get_header();
 
-$phone_code = $_GET['phone-code'];
-
+$phone_code = $_POST['phone-code'];
 ?>
 
 <div class="site-warranty">

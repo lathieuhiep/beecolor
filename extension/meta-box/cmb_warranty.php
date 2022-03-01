@@ -52,7 +52,6 @@ function beecolor_warranty_metaboxes()
         'id' => 'beecolor_warranty_issued_on',
         'type' => 'text_date',
         'class' => 'yourprefix_function_to_add_classes',
-        'date_format' => 'd/m/Y'
     ));
 
     $cmb_customer_info->add_field(array(
@@ -176,14 +175,12 @@ function beecolor_warranty_metaboxes()
         'name' => esc_html__('Ngày bắt đầu bảo hành', 'beecolor'),
         'id' => 'beecolor_warranty_product_start_date',
         'type' => 'text_date',
-        'date_format' => 'd/m/Y'
     ));
 
     $cmb_product->add_group_field($group_product_field_id, array(
         'name' => esc_html__('Ngày kết thúc bảo hành', 'beecolor'),
         'id' => 'beecolor_warranty_product_end_date',
         'type' => 'text_date',
-        'date_format' => 'd/m/Y'
     ));
 
     $cmb_product->add_field(array(

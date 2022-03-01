@@ -64,16 +64,24 @@ if ( isset( $args ) ) :
                             </td>
 
                             <td>
-                                <?php echo esc_html( $item['beecolor_warranty_product_start_date'] ); ?>
+                                <?php
+                                if ( $item['beecolor_warranty_product_start_date'] ) {
+                                    echo date('d/m/Y', strtotime( $item['beecolor_warranty_product_start_date'] ) );
+                                }
+                                ?>
                             </td>
 
                             <td>
                                 <?php
-                                echo esc_html( $item['beecolor_warranty_product_start_date'] );
+                                if ( $item['beecolor_warranty_product_start_date'] ) {
+                                    echo date('d/m/Y', strtotime( $item['beecolor_warranty_product_start_date'] ) );
+                                }
                                 echo '&nbsp;';
                                 esc_html_e( 'đến', 'beecolor' );
                                 echo '&nbsp;';
-                                echo esc_html( $item['beecolor_warranty_product_end_date'] );
+                                if ( $item['beecolor_warranty_product_end_date'] ) {
+                                    echo date('d/m/Y', strtotime( $item['beecolor_warranty_product_end_date'] ) );
+                                }
                                 ?>
                             </td>
                         </tr>

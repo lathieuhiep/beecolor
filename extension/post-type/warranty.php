@@ -36,8 +36,8 @@ function beecolor_create_warranty() {
         'menu_icon'          => 'dashicons-book',
         'rewrite'            => array('slug' => 'bao-hanh' ),
         'capability_type'    => 'post',
-        'has_archive'        => true,
-        'hierarchical'       => true,
+        'has_archive'        => false,
+        'hierarchical'       => false,
         'menu_position'      => 56,
         'supports'           => array( 'title' ),
     );

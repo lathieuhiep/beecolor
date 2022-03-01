@@ -48,7 +48,13 @@
                     </p>
 
                     <p class="text">
-                        <?php echo esc_html( get_post_meta( get_the_ID(), 'beecolor_warranty_issued_on', true ) ); ?>
+                        <?php
+                        $issued_on = get_post_meta( get_the_ID(), 'beecolor_warranty_issued_on', true );
+
+                        if ( $issued_on ) {
+                            echo date('d/m/Y', strtotime( $issued_on ) );
+                        }
+                        ?>
                     </p>
                 </div>
 

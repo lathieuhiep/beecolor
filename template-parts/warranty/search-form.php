@@ -10,7 +10,7 @@ $current_url = get_permalink( $obj_id );
         </h3>
 
         <div class="form-warranty">
-            <form method="get" class="search-form" action="<?php echo esc_url( $current_url ); ?>">
+            <form method="post" class="search-form" action="">
                 <label for="search-warranty">
                     <?php esc_html_e('Nhập số điện thoại hoặc mã đơn hàng', 'beecolor'); ?>
                 </label>
