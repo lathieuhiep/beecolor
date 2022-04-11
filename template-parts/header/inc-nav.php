@@ -1,4 +1,4 @@
-<div class="site-menu collapse navbar-collapse">
+<div id="site-menu" class="site-menu collapse navbar-collapse">
 
     <?php
 

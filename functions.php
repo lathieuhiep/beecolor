@@ -553,21 +553,35 @@ function beecolor_warranty_load_video_image() {
 
             $video = get_post_meta( get_the_ID(), 'beecolor_warranty_product_video', true );
             $image_gallery = get_post_meta( get_the_ID(), 'beecolor_warranty_product_image', true );
-            if ( $video ) :
-                echo wp_oembed_get( $video );
-            else:
+            $note = get_post_meta( get_the_ID(), 'beecolor_product_warranty_note', true );
+
     ?>
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+                <div class="note-warranty">
+                    <?php echo wp_kses_post( $note ); ?>
+                </div>
+            </div>
 
-            <ul id="imageGallery">
-                <?php foreach ( $image_gallery as $item ) : ?>
-                    <li data-thumb="<?php echo esc_url( $item ) ?>">
-                        <img src="<?php echo esc_url( $item ) ?>" alt="" />
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-
+            <div class="col">
+                <div class="media-box">
+                    <?php
+                    if ( $video ) :
+                        echo wp_oembed_get( $video );
+                    else:
+                    ?>
+                        <ul id="imageGallery">
+                            <?php foreach ( $image_gallery as $item ) : ?>
+                                <li data-thumb="<?php echo esc_url( $item ) ?>">
+                                    <img src="<?php echo esc_url( $item ) ?>" alt="" />
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
     <?php
-            endif;
         endwhile;
         wp_reset_postdata();
     endif;

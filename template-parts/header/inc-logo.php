@@ -14,7 +14,7 @@ $beecolor_logo_image_id    =   $beecolor_options['beecolor_logo_image']['id'];
         ?>
     </a>
 
-    <button class="navbar-toggler" data-toggle="collapse" data-target=".site-menu">
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#site-menu">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
 </div>

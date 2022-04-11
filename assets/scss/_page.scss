@@ -180,7 +180,7 @@
   .video-img-box {
     .select-box {
       position: relative;
-      width: 50%;
+      width: 30%;
 
       .select-contract-code {
         padding: 18px;
@@ -207,6 +207,10 @@
           opacity: 1;
         }
       }
+    }
+
+    .note-warranty {
+      padding-top: 30px;
     }
   }
 }

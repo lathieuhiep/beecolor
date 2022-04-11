@@ -233,10 +233,16 @@
         width: 1040px;
       }
     }
+  }
 
+}
+
+@media ( min-width: 768px ) {
+
+  .search-result-warranty {
     .video-img-box {
-      .select-box {
-        margin-bottom: 22px;
+      .media-box {
+        @include transform(translateY(-62px));
       }
     }
   }
@@ -276,14 +282,6 @@
     }
   }
 
-  .search-result-warranty {
-    .video-img-box {
-      .select-box {
-        width: 100%;
-      }
-    }
-  }
-
 }
 
 @media (max-width: 767px) {
@@ -305,6 +303,16 @@
             margin-bottom: 18px;
           }
         }
+      }
+    }
+
+    .video-img-box {
+      .select-box {
+        width: 100%;
+      }
+
+      .note-warranty {
+        padding-bottom: 30px;
       }
     }
   }

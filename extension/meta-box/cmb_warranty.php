@@ -204,4 +204,13 @@ function beecolor_warranty_metaboxes()
         'type' => 'oembed',
     ));
 
+    $cmb_product->add_field( array(
+        'name'    => esc_html__( 'Ghi chú bảo hành', 'beecolor' ),
+        'id'      => 'beecolor_product_warranty_note',
+        'type'    => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 12
+        ),
+    ) );
+
 }
