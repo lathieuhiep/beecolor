@@ -41,8 +41,11 @@ if( !function_exists('beecolor_setup') ):
         add_theme_support( 'automatic-feed-links' );
 
         // This theme uses wp_nav_menu() in two locations.
-        register_nav_menu('primary','Primary Menu');
-        register_nav_menu('footer-menu','Footer Menu');
+        register_nav_menus( array(
+            'primary' => esc_html__('Primary Menu', 'beecolor'),
+            'landing' => esc_html__('Landing Page Menu', 'beecolor'),
+            'footer-menu' => esc_html__('Footer Menu', 'beecolor')
+        ) );
 
         // add theme support title-tag
         add_theme_support( 'title-tag' );

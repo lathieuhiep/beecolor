@@ -1,5 +1,5 @@
 .site-header {
-  padding: 1.75rem 0 0.5rem;
+  padding: 0.5rem 0;
   background-color: $background-primary;
   @include transition(all 0.4s ease-out);
 
@@ -19,6 +19,7 @@
       }
     }
   }
+
   &__right {
     @include flex(1);
 
@@ -33,11 +34,13 @@
         label {
           display: none;
         }
+
         .search-field {
           width: 100%;
           padding: 2px 40px 2px 10px;
           border-radius: 8px;
         }
+
         .search-submit {
           position: absolute;
           top: 0;
@@ -54,22 +57,26 @@
             font-size: 15px;
             color: $color-title;
           }
+
           span {
             display: none;
           }
         }
       }
     }
+
     &--social {
       padding-left: 0.75rem;
     }
   }
 
 }
+
 .main-navigation {
   .site-navbar {
     position: relative;
   }
+
   button {
     &.navbar-toggler {
       padding: 0;
@@ -78,6 +85,7 @@
     }
   }
 }
+
 .site-logo {
   @include flex(0 0 auto);
 
@@ -85,6 +93,7 @@
     display: inline-block;
   }
 }
+
 .site-menu {
   padding-left: 0.75rem;
   @include flex(1);
@@ -108,11 +117,13 @@
           color: #ffffff;
         }
       }
+
       &:last-child {
         a {
           padding-right: 0;
         }
       }
+
       .sub-menu {
         min-width: 160px;
         position: absolute;
@@ -132,13 +143,16 @@
           &:first-child {
             border-top: 1px solid #000000;
           }
+
           a {
             white-space: nowrap;
           }
+
           .sub-menu {
             left: 90%;
             top: -1px;
           }
+
           &:hover {
             > .sub-menu {
               left: 100%;
@@ -146,6 +160,7 @@
           }
         }
       }
+
       &:hover {
         > .sub-menu {
           top: 100%;
@@ -157,6 +172,7 @@
     }
   }
 }
+
 .icon_menu_item_mobile {
   display: none;
   position: absolute;
@@ -174,9 +190,52 @@
     font-style: normal;
     font-weight: 900;
   }
+
   &.icon_menu_item_mobile_active {
     &:after {
       content: "\f077";
+    }
+  }
+}
+
+.header-landing {
+  .site-navigation {
+    &_warp {
+      align-items: center;
+    }
+  }
+
+  .site-menu {
+    justify-content: flex-end;
+
+    ul {
+      li {
+        a {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .header-phone {
+    margin-left: 32px;
+
+    a {
+      padding: 6px 20px;
+      display: block;
+      color: $color-hover;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 40px;
+      background-color: #000000;
+
+      i {
+        margin-right: 6px;
+      }
+
+      &:hover {
+        color: #ffffff;
+      }
     }
   }
 }

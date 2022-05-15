@@ -190,31 +190,6 @@ Redux::set_section( $beecolor_opt_name, array(
     'fields'        =>  array(
 
         array(
-            'id'        =>  'beecolor_information_show_hide',
-            'type'      =>  'select',
-            'title'     =>  esc_html__( 'Show Or Hide Information', 'beecolor' ),
-            'default'   =>  1,
-            'options'   =>  array(
-                1   =>  esc_html__( 'Show', 'beecolor' ),
-                0   =>  esc_html__( 'Hide', 'beecolor' )
-            )
-        ),
-
-        array(
-            'id'        =>  'beecolor_information_address',
-            'type'      =>  'text',
-            'title'     =>  esc_html__( 'Address', 'beecolor' ),
-            'default'   =>  '988782, Our Street, S State.',
-        ),
-
-        array(
-            'id'        =>  'beecolor_information_mail',
-            'type'      =>  'text',
-            'title'     =>  esc_html__( 'Mail', 'beecolor' ),
-            'default'   =>  'info@domain.com',
-        ),
-
-        array(
             'id'        =>  'beecolor_information_phone',
             'type'      =>  'text',
             'title'     =>  esc_html__( 'Phone', 'beecolor' ),
