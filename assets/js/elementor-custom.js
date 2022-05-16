@@ -20,6 +20,9 @@
         /* Element partners-carousel */
         elementorFrontend.hooks.addAction( 'frontend/element_ready/beecolor-partners-carousel.default', ElementCarouselSlider );
 
+        /* Element product popup */
+        elementorFrontend.hooks.addAction( 'frontend/element_ready/beecolor-product-popup.default', ElementCarouselSlider );
+
     } );
 
 })( jQuery );

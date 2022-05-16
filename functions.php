@@ -87,6 +87,7 @@ if ( !class_exists('CMB2') ) {
 // Required: Elementor
 if ( did_action( 'elementor/loaded' ) ) :
     require get_parent_theme_file_path( '/extension/elementor-addon/elementor-addon.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/element-function.php' );
 endif;
 
 /* Require Widgets */

@@ -1,9 +1,11 @@
 * {
   outline: none !important;
 }
+
 html {
   min-height: 100%;
 }
+
 body {
   min-height: 100vh;
   line-height: 1.6em;
@@ -16,33 +18,42 @@ body {
   @include flexbox();
   @include flex-direction(column);
 }
+
 .sticky-footer {
   flex: 1 0 auto;
 }
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 15px;
   font-weight: 700;
   color: $color-title;
   line-height: 1.4em;
 }
+
 h1 {
   font-size: 36px;
 }
+
 h2 {
   font-size: 30px;
 }
+
 h3 {
   font-size: 24px;
 }
+
 h4 {
   font-size: 20px;
 }
+
 h5 {
   font-size: 18px;
 }
+
 h6 {
   font-size: 16px;
 }
+
 a {
   color: $color-primary;
   @include transition(all 0.4s ease-in-out);
@@ -51,10 +62,12 @@ a {
   &:focus {
     text-decoration: none;
   }
+
   &:hover {
     color: $color-hover;
   }
 }
+
 p {
   margin: 0 0 15px;
 
@@ -62,24 +75,36 @@ p {
     margin-bottom: 0;
   }
 }
+
 figure {
   margin: 0;
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
+
 iframe {
   max-width: 100%;
 }
+
 blockquote {
   border-left: 1px solid $color-hover;
   padding-left: 30px;
 }
+
 pre {
   white-space: pre-wrap;
   margin-bottom: 30px;
 }
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active:focus {
+  box-shadow: none;
+}
+
 .nav {
   > li {
     > a {
@@ -89,12 +114,14 @@ pre {
     }
   }
 }
+
 .form-control {
   &:focus {
     border-color: $color-hover;
     @include box-shadow(none);
   }
 }
+
 #site-loadding {
   position: fixed;
   top: 0;
@@ -104,6 +131,7 @@ pre {
   background-color: #ffffff;
   z-index: 99999;
 }
+
 #back-top {
   background-color: $background-hover;
   opacity: 0;
@@ -124,13 +152,16 @@ pre {
     text-decoration: none;
     @include transition(all 0.25s ease-in-out);
   }
+
   &.active_top {
     opacity: 1;
   }
+
   &:hover {
     background-color: $background-primary;
   }
 }
+
 /* Social network */
 .social-network-item {
   display: inline-block;
@@ -139,6 +170,7 @@ pre {
   &:last-child {
     margin-right: 0;
   }
+
   a {
     display: block;
     font-size: 28px;
@@ -148,6 +180,7 @@ pre {
     }
   }
 }
+
 .social-network-toTopFromBottom {
   .social-network-item {
     overflow: hidden;
@@ -161,6 +194,7 @@ pre {
     }
   }
 }
+
 @-webkit-keyframes toTopFromBottom {
   49% {
     -webkit-transform: translateY(-100%);
@@ -173,6 +207,7 @@ pre {
     opacity: 1;
   }
 }
+
 @-moz-keyframes toTopFromBottom {
   49% {
     -moz-transform: translateY(-100%);
@@ -185,6 +220,7 @@ pre {
     opacity: 1;
   }
 }
+
 @keyframes toTopFromBottom {
   49% {
     transform: translateY(-100%);
@@ -197,6 +233,7 @@ pre {
     opacity: 1;
   }
 }
+
 /* owl carousel navigation */
 .owl-carousel {
   .owl-nav {
@@ -217,6 +254,7 @@ pre {
           background-color: #333333;
         }
       }
+
       i.fa {
         color: #ffffff;
         font-size: 20px;
@@ -225,6 +263,7 @@ pre {
       }
     }
   }
+
   .owl-dots {
     margin-top: 30px;
     @include flexbox();
@@ -243,6 +282,7 @@ pre {
         @include border-radius(50%);
         @include transition(all 0.2s ease-in-out);
       }
+
       &.active,
       &:hover {
         span {
@@ -252,6 +292,7 @@ pre {
     }
   }
 }
+
 .custom-equal-height-owl {
   .owl-stage {
     @include flexbox();
@@ -274,6 +315,80 @@ pre {
 
       .current-item {
         color: $color-hover;
+      }
+    }
+  }
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Custom modal */
+.custom-modal {
+  .modal-dialog-scrollable {
+    .modal-body {
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    }
+  }
+}
+
+/* Custom tab */
+.custom-tab {
+  .nav-tabs {
+    .nav-link {
+      margin-right: 2px;
+      color: #ffffff;
+      border: none;
+      border-radius: 0;
+      background-color: #323232;
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -ms-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+
+      &.active,
+      &:hover {
+        background-color: $background-primary;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 15px;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #eeeeee;
+
+    table {
+      margin-bottom: 16px;
+      width: 100%;
+      border: 1px solid #000000;
+
+      tr {
+        td {
+          padding: 0 8px;
+          border: 1px solid #000000;
+        }
       }
     }
   }
