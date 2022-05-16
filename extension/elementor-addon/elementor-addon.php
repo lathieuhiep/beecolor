@@ -27,6 +27,10 @@ function beecolor_register_widget_elementor_addon( $widgets_manager ) {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-theme.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-theme-2.php' );
 
+    // template landing page
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/introduce.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/product-popup.php' );
+
 	// register add on
     $widgets_manager->register( new \beecolor_widget_slides() );
     $widgets_manager->register( new \beecolor_widget_post_grid() );
@@ -37,6 +41,8 @@ function beecolor_register_widget_elementor_addon( $widgets_manager ) {
     $widgets_manager->register( new \beecolor_widget_feature_project() );
     $widgets_manager->register( new \beecolor_widget_image_box_theme() );
     $widgets_manager->register( new \beecolor_widget_image_box_theme_2() );
+    $widgets_manager->register( new \beecolor_widget_introduce() );
+    $widgets_manager->register( new \beecolor_widget_product_popup() );
 
 }
 add_action( 'elementor/widgets/register', 'beecolor_register_widget_elementor_addon' );
@@ -44,5 +50,12 @@ add_action( 'elementor/widgets/register', 'beecolor_register_widget_elementor_ad
 // Register Script Elementor Addon
 function beecolor_register_script_elementor_addon() {
 	wp_register_script( 'beecolor-elementor-custom', get_theme_file_uri( '/assets/js/elementor-custom.js' ), array(), '1.0.0', true );
+
+    // load ajax element
+    wp_register_script( 'beecolor-landing-page', get_theme_file_uri( '/assets/js/landing-page.js' ), array(), '', true );
+
+    $element_admin_url = admin_url( 'admin-ajax.php' );
+    $element_ajax = array( 'url' => $element_admin_url );
+    wp_localize_script( 'beecolor-landing-page', 'beecolor_landing_page', $element_ajax );
 }
 add_action( 'elementor/frontend/after_enqueue_styles', 'beecolor_register_script_elementor_addon' );
