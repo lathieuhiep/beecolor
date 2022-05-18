@@ -30,6 +30,7 @@ function beecolor_register_widget_elementor_addon( $widgets_manager ) {
     // template landing page
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/introduce.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/product-popup.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/project-popup.php' );
 
 	// register add on
     $widgets_manager->register( new \beecolor_widget_slides() );
@@ -43,6 +44,7 @@ function beecolor_register_widget_elementor_addon( $widgets_manager ) {
     $widgets_manager->register( new \beecolor_widget_image_box_theme_2() );
     $widgets_manager->register( new \beecolor_widget_introduce() );
     $widgets_manager->register( new \beecolor_widget_product_popup() );
+    $widgets_manager->register( new \beecolor_widget_project_popup() );
 
 }
 add_action( 'elementor/widgets/register', 'beecolor_register_widget_elementor_addon' );

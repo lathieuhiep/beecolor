@@ -1,12 +1,11 @@
 <?php
 
-use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
 if (!defined('ABSPATH')) exit;
 
-class beecolor_widget_product_popup extends Widget_Base
+class beecolor_widget_project_popup extends Widget_Base
 {
 
     public function get_categories()
@@ -16,12 +15,12 @@ class beecolor_widget_product_popup extends Widget_Base
 
     public function get_name()
     {
-        return 'beecolor-product-popup';
+        return 'beecolor-project-popup';
     }
 
     public function get_title()
     {
-        return esc_html__('Product Popup', 'beecolor');
+        return esc_html__('Project Popup', 'beecolor');
     }
 
     public function get_icon()
@@ -49,7 +48,7 @@ class beecolor_widget_product_popup extends Widget_Base
             [
                 'label' => esc_html__('Select Category', 'beecolor'),
                 'type' => Controls_Manager::SELECT2,
-                'options' => beecolor_check_get_cat('product_cat'),
+                'options' => beecolor_check_get_cat('project_cat'),
                 'multiple' => true,
                 'label_block' => true
             ]
@@ -179,7 +178,7 @@ class beecolor_widget_product_popup extends Widget_Base
             [
                 'label' => esc_html__('Number of Item', 'beecolor'),
                 'type' => Controls_Manager::NUMBER,
-                'default' => 3,
+                'default' => 4,
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
@@ -200,7 +199,7 @@ class beecolor_widget_product_popup extends Widget_Base
             [
                 'label' => esc_html__('Number of Item', 'beecolor'),
                 'type' => Controls_Manager::NUMBER,
-                'default' => 2,
+                'default' => 3,
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
@@ -334,19 +333,17 @@ class beecolor_widget_product_popup extends Widget_Base
         $tax_query = array();
 
         if ( !empty( $cate ) ) :
-
             $tax_query = array(
                 array(
-                    'taxonomy' => 'product_cat',
+                    'taxonomy' => 'project_cat',
                     'field' => 'term_id',
                     'terms' => $cate,
                 ),
             );
-
         endif;
 
         $args = array(
-            'post_type' => 'product',
+            'post_type' => 'project',
             'posts_per_page' => $limit,
             'orderby' => $order_by,
             'order' => $order_post,
@@ -358,11 +355,9 @@ class beecolor_widget_product_popup extends Widget_Base
 
         if ($query->have_posts()) :
         ?>
-
-            <div class="element-product-popup">
+            <div class="element-project-popup">
                 <div class="custom-owl-carousel custom-equal-height-owl owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode($data_settings_owl); ?>'>
                     <?php while ($query->have_posts()): $query->the_post(); ?>
-
                         <div class="item-post">
                             <div class="item-post__thumbnail">
                                 <?php
@@ -375,19 +370,28 @@ class beecolor_widget_product_popup extends Widget_Base
                             </div>
 
                             <div class="item-post__content">
-                                <h2 class="item-post__title" data-product-id="<?php echo esc_attr( get_the_ID() ); ?>">
+                                <h2 class="item-post__title">
                                     <?php the_title(); ?>
                                 </h2>
-                            </div>
-                        </div>
 
+                                <div class="item-post__desc">
+                                    <?php the_excerpt(); ?>
+                                </div>
+
+                                <p class="item-post__more">
+                                    <?php esc_html_e('Xem thêm'); ?>
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </p>
+                            </div>
+
+                            <a href="#" class="view-project" data-project-id="<?php echo esc_attr( get_the_ID() ); ?>"></a>
+                        </div>
                     <?php
                     endwhile;
                     wp_reset_postdata();
                     ?>
                 </div>
             </div>
-
         <?php
 
         endif;

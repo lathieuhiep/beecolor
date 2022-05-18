@@ -57,6 +57,7 @@ if( !function_exists('beecolor_setup') ):
 endif;
 
 // Required: post type
+require get_parent_theme_file_path( '/extension/post-type/project.php' );
 require get_parent_theme_file_path( '/extension/post-type/warranty.php' );
 
 /**
@@ -81,6 +82,7 @@ if ( class_exists( 'ReduxFramework' ) ) {
 if ( !class_exists('CMB2') ) {
     require get_parent_theme_file_path( '/extension/meta-box/cmb_add_field_type.php' );
     require get_parent_theme_file_path( '/extension/meta-box/cmb_product.php' );
+    require get_parent_theme_file_path( '/extension/meta-box/cmb_project.php' );
     require get_parent_theme_file_path( '/extension/meta-box/cmb_warranty.php' );
 }
 

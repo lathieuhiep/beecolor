@@ -109,3 +109,75 @@ function beecolor_product_popup() {
 
     wp_die();
 }
+
+/* Start ajax view project */
+add_action( 'wp_ajax_nopriv_beecolor_project_popup', 'beecolor_project_popup' );
+add_action( 'wp_ajax_beecolor_project_popup', 'beecolor_project_popup' );
+
+function beecolor_project_popup() {
+    $id = (int) $_POST['id'];
+
+    $args = array(
+        'post_type' => 'project',
+        'post__in' => array($id)
+    );
+
+    $query = new WP_Query( $args );
+
+    while ( $query->have_posts() ):
+        $query->the_post();
+
+        $gallery = get_post_meta( get_the_ID(), 'beecolor_cmb_project_gallery', true );
+    ?>
+
+        <div id="modal-project-popup" class="modal fade modal-project-popup custom-modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <?php the_title(); ?>
+                        </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <div id="product-gallery">
+                                    <div data-thumb="<?php echo esc_url( get_the_post_thumbnail_url() ); ?>">
+                                        <img src="<?php echo esc_url( get_the_post_thumbnail_url() ) ?>" alt="" />
+                                    </div>
+
+                                    <?php
+                                    if ( !empty( $gallery ) ) :
+                                        foreach ( $gallery as $item ) :
+                                    ?>
+
+                                        <div data-thumb="<?php echo esc_url( $item ) ?>">
+                                            <img src="<?php echo esc_url( $item ) ?>" alt="" />
+                                        </div>
+
+                                    <?php
+                                        endforeach;
+                                    endif;
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="content">
+                                    <?php the_content(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php
+    endwhile;
+    wp_reset_postdata();
+
+    wp_die();
+}

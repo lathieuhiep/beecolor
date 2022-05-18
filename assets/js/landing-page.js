@@ -13,7 +13,7 @@
             const product_id = $(this).data('product-id');
 
             product_item.addClass('pointer-events-none');
-            item.append('<div class="spinner-box"><div class="spinner-border text-warning" role="status"><span class="visually-hidden">Loading...</span></div></div>');
+            item.append('<div class="spinner-box"><div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div></div>');
 
             $.ajax({
                 url: beecolor_landing_page.url,
@@ -22,8 +22,6 @@
                     action: 'beecolor_product_popup',
                     product_id: product_id,
                 }),
-
-                beforeSend: function () {},
 
                 success: function (data) {
                     if (data) {
@@ -35,9 +33,46 @@
                     const modalToggle = body.find('#modal-product-popup');
                     modalToggle.modal("show");
 
-                    eventShowProductPopup();
-                    eventHideProductPopup();
+                    eventShowProductPopup('modal-product-popup');
+                    eventHideProductPopup('modal-product-popup');
                     product_item.removeClass('pointer-events-none');
+                    item.find('.spinner-box').remove();
+                }
+            });
+        });
+
+        // event project popup
+        $('.view-project').on('click', function (event) {
+            event.preventDefault();
+
+            const item_parent = $('.element-project-popup .item-post');
+            const item = $(this).closest('.item-post');
+            const id = $(this).data('project-id');
+
+            item_parent.addClass('pointer-events-none');
+            item.append('<div class="spinner-box"><div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div></div>');
+
+            $.ajax({
+                url: beecolor_landing_page.url,
+                type: 'POST',
+                data: ({
+                    action: 'beecolor_project_popup',
+                    id: id,
+                }),
+
+                success: function (data) {
+                    if (data) {
+                        body.append(data);
+                    }
+                },
+
+                complete: function () {
+                    const modalToggle = body.find('#modal-project-popup');
+                    modalToggle.modal("show");
+
+                    eventShowProductPopup('modal-project-popup');
+                    eventHideProductPopup('modal-project-popup');
+                    item_parent.removeClass('pointer-events-none');
                     item.find('.spinner-box').remove();
                 }
             });
@@ -45,18 +80,9 @@
 
     });
 
-    // function event hide product popup
-    const eventHideProductPopup = () => {
-        const myModalEl = document.getElementById('modal-product-popup');
-
-        myModalEl.addEventListener('hidden.bs.modal', function (event) {
-            body.find('.modal-product-popup').remove();
-        })
-    }
-
     // function event show product popup
-    const eventShowProductPopup = () => {
-        const myModalEl = document.getElementById('modal-product-popup');
+    const eventShowProductPopup = (element) => {
+        const myModalEl = document.getElementById(element);
 
         myModalEl.addEventListener('shown.bs.modal', function (event) {
             $('#product-gallery').lightSlider({
@@ -70,6 +96,15 @@
                 adaptiveHeight:true,
                 controls: false
             });
+        })
+    }
+
+    // function event hide product popup
+    const eventHideProductPopup = (element) => {
+        const myModalEl = document.getElementById(element);
+
+        myModalEl.addEventListener('hidden.bs.modal', function (event) {
+            myModalEl.remove();
         })
     }
 

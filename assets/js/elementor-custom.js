@@ -23,6 +23,9 @@
         /* Element product popup */
         elementorFrontend.hooks.addAction( 'frontend/element_ready/beecolor-product-popup.default', ElementCarouselSlider );
 
+        /* Element project popup */
+        elementorFrontend.hooks.addAction( 'frontend/element_ready/beecolor-project-popup.default', ElementCarouselSlider );
+
     } );
 
 })( jQuery );
