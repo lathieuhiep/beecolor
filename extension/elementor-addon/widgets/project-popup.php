@@ -358,7 +358,7 @@ class beecolor_widget_project_popup extends Widget_Base
             <div class="element-project-popup">
                 <div class="custom-owl-carousel custom-equal-height-owl owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode($data_settings_owl); ?>'>
                     <?php while ($query->have_posts()): $query->the_post(); ?>
-                        <div class="item-post">
+                        <div class="item-post item-effect">
                             <div class="item-post__thumbnail">
                                 <?php
                                 if (has_post_thumbnail()) :
@@ -384,7 +384,7 @@ class beecolor_widget_project_popup extends Widget_Base
                                 </p>
                             </div>
 
-                            <a href="#" class="view-project" data-project-id="<?php echo esc_attr( get_the_ID() ); ?>"></a>
+                            <a href="#" class="view-project view-popup" data-project-id="<?php echo esc_attr( get_the_ID() ); ?>"></a>
                         </div>
                     <?php
                     endwhile;

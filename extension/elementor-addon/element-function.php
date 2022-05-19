@@ -181,3 +181,45 @@ function beecolor_project_popup() {
 
     wp_die();
 }
+
+/* Start ajax view post */
+add_action( 'wp_ajax_nopriv_beecolor_post_popup', 'beecolor_post_popup' );
+add_action( 'wp_ajax_beecolor_post_popup', 'beecolor_post_popup' );
+
+function beecolor_post_popup() {
+    $id = (int) $_POST['id'];
+
+    $args = array(
+        'post_type' => 'post',
+        'post__in' => array($id)
+    );
+
+    $query = new WP_Query( $args );
+
+    while ( $query->have_posts() ):
+        $query->the_post();
+    ?>
+
+        <div id="modal-post-popup" class="modal fade modal-post-popup custom-modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <?php the_title(); ?>
+                        </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <?php the_content(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php
+    endwhile;
+    wp_reset_postdata();
+
+    wp_die();
+}

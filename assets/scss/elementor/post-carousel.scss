@@ -1,19 +1,53 @@
-.element-post-carousel {
+.item-effect {
+  position: relative;
+
   .item-post {
-    @include flexbox();
-    @include flex-direction(column);
-    @include flex(1);
+    &__thumbnail {
+      margin-bottom: 12px;
 
-    .item-post_content {
-      padding: 15px;
-      border: 1px solid $border-color;
-      @include flexbox();
-      @include flex-direction(column);
-      @include flex(1);
-
-      .item-post__title {
-        @include flex(1);
+      img {
+        @include transition();
       }
     }
+
+    &__title {
+      margin-bottom: 6px;
+    }
+
+    &__desc {
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    &__more {
+      font-size: 16px;
+      @include transition();
+
+      i {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &:hover {
+    .item-post {
+      &__thumbnail {
+        img {
+          opacity: 0.5;
+        }
+      }
+
+      &__more {
+        color: $color-hover;
+      }
+    }
+  }
+
+  .view-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 }

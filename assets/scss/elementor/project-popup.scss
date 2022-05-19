@@ -1,9 +1,6 @@
 .element-project-popup {
   .item-post {
-    position: relative;
-
     &__thumbnail {
-      margin-bottom: 12px;
       height: 200px;
       overflow: hidden;
 
@@ -11,49 +8,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        @include transition();
       }
     }
 
     &__title {
       font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    &__desc {
-      margin-bottom: 12px;
-      font-size: 16px;
-    }
-
-    &__more {
-      font-size: 16px;
-      @include transition();
-
-      i {
-        margin-left: 5px;
-      }
-    }
-
-    .view-project {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-
-    &:hover {
-      .item-post {
-        &__thumbnail {
-          img {
-            opacity: 0.5;
-          }
-        }
-
-        &__more {
-          color: $color-hover;
-        }
-      }
     }
   }
 }

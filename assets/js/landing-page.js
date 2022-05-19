@@ -78,25 +78,65 @@
             });
         });
 
+        // event post popup
+        $('.view-post').on('click', function (event) {
+            event.preventDefault();
+
+            const item_parent = $('.element-post-carousel .item-post');
+            const item = $(this).closest('.item-post');
+            const id = $(this).data('id');
+
+            item_parent.addClass('pointer-events-none');
+            item.append('<div class="spinner-box"><div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div></div>');
+
+            $.ajax({
+                url: beecolor_landing_page.url,
+                type: 'POST',
+                data: ({
+                    action: 'beecolor_post_popup',
+                    id: id,
+                }),
+
+                success: function (data) {
+                    if (data) {
+                        body.append(data);
+                    }
+                },
+
+                complete: function () {
+                    const modalToggle = body.find('#modal-post-popup');
+                    modalToggle.modal("show");
+
+                    eventShowProductPopup('modal-post-popup');
+                    eventHideProductPopup('modal-post-popup');
+                    item_parent.removeClass('pointer-events-none');
+                    item.find('.spinner-box').remove();
+                }
+            });
+        });
+
     });
 
     // function event show product popup
     const eventShowProductPopup = (element) => {
         const myModalEl = document.getElementById(element);
+        const productGallery = $('#product-gallery');
 
-        myModalEl.addEventListener('shown.bs.modal', function (event) {
-            $('#product-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                loop:true,
-                thumbItem:6,
-                slideMargin:0,
-                enableDrag: true,
-                currentPagerPosition:'left',
-                adaptiveHeight:true,
-                controls: false
-            });
-        })
+        if ( productGallery.length ) {
+            myModalEl.addEventListener('shown.bs.modal', function (event) {
+                productGallery.lightSlider({
+                    gallery:true,
+                    item:1,
+                    loop:true,
+                    thumbItem:6,
+                    slideMargin:0,
+                    enableDrag: true,
+                    currentPagerPosition:'left',
+                    adaptiveHeight:true,
+                    controls: false
+                });
+            })
+        }
     }
 
     // function event hide product popup

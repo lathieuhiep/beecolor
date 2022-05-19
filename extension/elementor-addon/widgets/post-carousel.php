@@ -526,66 +526,60 @@ class beecolor_widget_post_carousel extends Widget_Base {
 
         $query = new WP_Query( $args );
 
-        if ( $query->have_posts() ) :
-
+        if ( !$query->have_posts() ) :
+            return false;
+        endif;
     ?>
 
-            <div class="element-post-carousel">
-                <div class="custom-owl-carousel custom-equal-height-owl owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode( $data_settings_owl ) ; ?>'>
-                    <?php while ( $query->have_posts() ): $query->the_post(); ?>
-
-                        <div class="item-post">
-                            <div class="item-post__thumbnail">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                    <?php
-                                    if ( has_post_thumbnail() ) :
-
-                                        the_post_thumbnail( 'large' );
-
-                                    else:
-
-                                    ?>
-
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/no-image.png' ) ) ?>" alt="<?php the_title(); ?>" />
-
-                                    <?php endif; ?>
-                                </a>
-                            </div>
-
-                            <div class="item-post_content">
-                                <h2 class="item-post__title">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php the_title(); ?>
-                                    </a>
-                                </h2>
-
-                                <?php if ( $settings['show_excerpt'] == 1 ) : ?>
-
-                                    <div class="item-post__desc">
-                                        <p>
-                                            <?php
-                                            if ( has_excerpt() ) :
-                                                echo esc_html( wp_trim_words( get_the_excerpt(), $settings['excerpt_length'], '...' ) );
-                                            else:
-                                                echo esc_html( wp_trim_words( get_the_content(), $settings['excerpt_length'], '...' ) );
-                                            endif;
-                                            ?>
-                                        </p>
-                                    </div>
-
-                                <?php endif; ?>
-                            </div>
+        <div class="element-post-carousel">
+            <div class="custom-owl-carousel owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode( $data_settings_owl ) ; ?>'>
+                <?php while ( $query->have_posts() ): $query->the_post(); ?>
+                    <div class="item-post item-effect">
+                        <div class="item-post__thumbnail">
+                            <?php
+                            if ( has_post_thumbnail() ) :
+                                the_post_thumbnail( 'large' );
+                            else:
+                            ?>
+                                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/no-image.png' ) ) ?>" alt="<?php the_title(); ?>" />
+                            <?php endif; ?>
                         </div>
 
-                    <?php endwhile; wp_reset_postdata(); ?>
-                </div>
+                        <div class="item-post_content">
+                            <h2 class="item-post__title">
+                                <?php the_title(); ?>
+                            </h2>
+
+                            <?php if ( $settings['show_excerpt'] == 1 ) : ?>
+
+                                <div class="item-post__desc">
+                                    <p>
+                                        <?php
+                                        if ( has_excerpt() ) :
+                                            echo esc_html( wp_trim_words( get_the_excerpt(), $settings['excerpt_length'], '...' ) );
+                                        else:
+                                            echo esc_html( wp_trim_words( get_the_content(), $settings['excerpt_length'], '...' ) );
+                                        endif;
+                                        ?>
+                                    </p>
+                                </div>
+
+                            <?php endif; ?>
+
+                            <p class="item-post__more">
+                                <?php esc_html_e('Xem thêm'); ?>
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                            </p>
+                        </div>
+
+                        <a href="#" class="view-post view-popup" data-id="<?php echo esc_attr( get_the_ID() ); ?>"></a>
+                    </div>
+
+                <?php endwhile; wp_reset_postdata(); ?>
             </div>
+        </div>
 
     <?php
-
-        endif;
     }
-
-    protected function _content_template() {}
 
 }
