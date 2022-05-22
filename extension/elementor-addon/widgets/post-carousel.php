@@ -25,7 +25,7 @@ class beecolor_widget_post_carousel extends Widget_Base {
     }
 
     public function get_script_depends() {
-        return ['beecolor-elementor-custom'];
+        return ['beecolor-elementor-custom', 'beecolor-landing-page'];
     }
 
     protected function _register_controls() {
@@ -42,9 +42,8 @@ class beecolor_widget_post_carousel extends Widget_Base {
             'select_cat',
             [
                 'label'         =>  esc_html__( 'Select Category', 'beecolor' ),
-                'type'          =>  Controls_Manager::SELECT2,
+                'type'          =>  Controls_Manager::SELECT,
                 'options'       =>  beecolor_check_get_cat( 'category' ),
-                'multiple'      =>  true,
                 'label_block'   =>  true
             ]
         );

@@ -1,0 +1,170 @@
+.element-warranty-check {
+  display: grid;
+  grid-column-gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+
+  .form-warranty {
+    padding: 30px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+
+    .title {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .search-warranty {
+      label {
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .form-control,
+      .g-recaptcha {
+        margin-bottom: 22px;
+      }
+
+      .action-box {
+        position: relative;
+
+        button {
+          padding: 10px 20px;
+          font-size: 15px;
+          color: #000000;
+          font-weight: 700;
+          border-radius: 6px;
+          @include transition();
+
+          &:hover {
+            color: #ffffff;
+            background-color: #000000;
+          }
+        }
+      }
+
+      .error {
+        color: #ff0000;
+      }
+    }
+  }
+
+  .conditions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__title {
+      font-size: 30px;
+    }
+
+    .btn-view-more {
+      padding: 8px 24px;
+      text-transform: uppercase;
+      border: none;
+      background-color: #000000;
+      @include transition();
+
+      &:hover {
+        color: #000000;
+        background-color: $background-hover;
+      }
+    }
+  }
+}
+
+.modal-search-warranty {
+  .modal-body {
+    .customer-info-box {
+      display: grid;
+      grid-column-gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+
+      .item {
+        margin-bottom: 16px;
+
+        p {
+          min-height: 38px;
+
+          &.label {
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 15px;
+          }
+
+          &.text {
+            margin-bottom: 0;
+            padding: 6px 12px;
+            color: #303030;
+            font-size: 14px;
+            border: 1px solid #C1C1C1;
+          }
+        }
+      }
+    }
+
+    .unit-box {
+      .title-unit {
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+
+      .info {
+        padding: 18px 14px;
+        border: 1px solid #C1C1C1;
+
+        &__item {
+          margin-bottom: 8px;
+          display: grid;
+          grid-gap: 12px;
+          grid-template-columns: minmax(auto, 90px) 1fr;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+
+    .video-img-box {
+      .select-box {
+        position: relative;
+        width: 30%;
+
+        .select-contract-code {
+          padding: 8px;
+          border-radius: 0;
+          border: 1px solid #979797;
+        }
+
+        &__spinner {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          visibility: hidden;
+          opacity: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          @include flexbox();
+          @include align-items(center);
+          @include justify-content(center);
+          @include transition();
+
+          &.active {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      .note-warranty {
+        padding-top: 30px;
+      }
+
+      .media-box {
+        @include transform(translateY(-62px));
+      }
+    }
+  }
+}

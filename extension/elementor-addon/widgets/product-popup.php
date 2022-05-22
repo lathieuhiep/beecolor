@@ -363,7 +363,7 @@ class beecolor_widget_product_popup extends Widget_Base
                 <div class="custom-owl-carousel custom-equal-height-owl owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode($data_settings_owl); ?>'>
                     <?php while ($query->have_posts()): $query->the_post(); ?>
 
-                        <div class="item-post">
+                        <div class="item-post item-product-popup" data-product-id="<?php echo esc_attr( get_the_ID() ); ?>">
                             <div class="item-post__thumbnail">
                                 <?php
                                 if (has_post_thumbnail()) :
@@ -375,7 +375,7 @@ class beecolor_widget_product_popup extends Widget_Base
                             </div>
 
                             <div class="item-post__content">
-                                <h2 class="item-post__title" data-product-id="<?php echo esc_attr( get_the_ID() ); ?>">
+                                <h2 class="item-post__title">
                                     <?php the_title(); ?>
                                 </h2>
                             </div>

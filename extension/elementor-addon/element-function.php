@@ -55,7 +55,7 @@ function beecolor_product_popup() {
 
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active product-description" id="product-description">
-                                <div class="row row-cols-2">
+                                <div class="row row-cols-1 row-cols-md-2">
                                     <div class="col">
                                         <div id="product-gallery">
                                             <div data-thumb="<?php echo esc_url( get_the_post_thumbnail_url() ); ?>">
@@ -220,6 +220,102 @@ function beecolor_post_popup() {
     <?php
     endwhile;
     wp_reset_postdata();
+
+    wp_die();
+}
+
+/* Start ajax search warranty */
+add_action( 'wp_ajax_nopriv_beecolor_search_warranty', 'beecolor_search_warranty' );
+add_action( 'wp_ajax_beecolor_search_warranty', 'beecolor_search_warranty' );
+
+function beecolor_search_warranty() {
+    $phone_code = $_POST['phone_code'];
+
+    $q1 = get_posts(array(
+        'fields' => 'ids',
+        'post_type' => 'warranty',
+        's' => $phone_code,
+        'exact' => true,
+    ));
+
+    $q2 = [];
+
+    if ( is_numeric( $phone_code ) && strlen($phone_code) == 10 ) {
+        $q2 = get_posts(array(
+            'fields' => 'ids',
+            'post_type' => 'warranty',
+            'meta_query' => array(
+                array(
+                    'key'     => 'beecolor_warranty_phone',
+                    'value'   => $phone_code,
+                    'compare' => 'LIKE',
+                )
+            )
+        ));
+    }
+
+    $unique = array_unique( array_merge( $q1, $q2 ) );
+
+?>
+    <div id="modal-search-warranty" class="modal fade modal-search-warranty custom-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <?php esc_html_e('Thông tin bảo hành', 'beecolor'); ?>
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <?php
+                    if ( $unique ) :
+                        // customer
+                        $args_first = array(
+                            'post_type' => 'warranty',
+                            'post__in' => array($unique[0]),
+                        );
+                        $query_first = new WP_Query( $args_first );
+
+                        if ( $query_first->have_posts() ) {
+                            while ( $query_first->have_posts() ) : $query_first->the_post();
+
+                                get_template_part( 'template-parts/warranty/customer', 'info' );
+
+                            endwhile;
+                            wp_reset_postdata();
+                        }
+
+                        // contract list
+                        $args_all = array(
+                            'post_type' => 'warranty',
+                            'post__in' => $unique,
+                        );
+
+                        $query_all = new WP_Query( $args_all );
+
+                        if ( $query_all->have_posts() ) {
+                            get_template_part( 'template-parts/warranty/contract', 'list', array(
+                                'query_all' => $query_all
+                            ) );
+                        }
+
+                        // video or images
+                        get_template_part( 'template-parts/warranty/video', 'image', array(
+                            'query_all' => $query_all
+                        ) );
+
+                    else:
+                    ?>
+                        <p>
+                            <?php esc_html_e('Không có thông tin bảo hành', 'beecolor'); ?>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
 
     wp_die();
 }

@@ -72,7 +72,7 @@ function beecolor_register_front_end() {
 
     // add script header
     function beecolor_recaptcha() {
-        if ( is_page_template('templates/template-warranty.php') ) :
+        if ( is_page_template('templates/template-warranty.php') || is_page_template('templates/landing.php') ) :
     ?>
         <script src="https://www.google.com/recaptcha/api.js?hl=vi" async defer></script>
     <?php

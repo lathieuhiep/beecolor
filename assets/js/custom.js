@@ -11,7 +11,6 @@
     let timer_clear;
 
     $( document ).ready( function () {
-
         /* Start back top */
         $('#back-top').on( 'click', function (e) {
             e.preventDefault();

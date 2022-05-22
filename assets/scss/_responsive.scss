@@ -287,6 +287,12 @@
     }
   }
 
+  .custom-modal {
+    .modal-dialog {
+      max-width: 760px;
+    }
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -386,6 +392,12 @@
     }
   }
 
+  .custom-modal {
+    .modal-dialog {
+      max-width: 600px;
+    }
+  }
+
 }
 
 @media (max-width: 575px) {
@@ -424,6 +436,11 @@
       grid-template-columns: 1fr;
       grid-row-gap: 30px;
     }
+  }
+
+  .element-warranty-check {
+    grid-row-gap: 24px;
+    grid-template-columns: 1fr;
   }
 
 }
