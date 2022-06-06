@@ -1,0 +1,29 @@
+.element-banner {
+  position: relative;
+  height: 582px;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__content {
+    position: relative;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .btn-modal-popup {
+    position: absolute;
+    bottom: 160px;
+    right: 70px;
+    padding: 12px 50px;
+    font-size: 22px;
+    font-weight: 500;
+    border: none;
+    border-radius: 12px;
+    background-color: $background-primary;
+  }
+}

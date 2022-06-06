@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -40,6 +41,17 @@ class beecolor_widget_introduce extends Widget_Base {
                 'type'          =>  Controls_Manager::WYSIWYG,
                 'default'       =>  esc_html__( 'Default description', 'beecolor' ),
                 'label_block'   =>  true
+            ]
+        );
+
+        $this->add_control(
+            'image',
+            [
+                'label'     =>  esc_html__( 'Image', 'beecolor' ),
+                'type'      =>  Controls_Manager::MEDIA,
+                'default'   =>  [
+                    'url'   =>  Utils::get_placeholder_image_src(),
+                ],
             ]
         );
 
@@ -100,16 +112,26 @@ class beecolor_widget_introduce extends Widget_Base {
     ?>
 
         <div class="element-introduce">
-            <div class="description">
-                <?php echo wp_kses_post( $settings['description'] ); ?>
+            <div class="element-introduce__left">
+                <div class="description">
+                    <?php echo wp_kses_post( $settings['description'] ); ?>
+                </div>
+
+                <!-- Button trigger modal -->
+                <?php if ( $modal_desc ) : ?>
+                    <div class="action-box">
+                        <button type="button" class="btn btn-primary btn-view-more" data-bs-toggle="modal" data-bs-target="#<?php echo esc_attr( $id_modal ); ?>">
+                            <?php echo esc_html( $settings['text_btn'] ); ?>
+                        </button>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="element-introduce__right">
+                <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
             </div>
 
             <?php if ( $modal_desc ) : ?>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-view-more" data-bs-toggle="modal" data-bs-target="#<?php echo esc_attr( $id_modal ); ?>">
-                    <?php echo esc_html( $settings['text_btn'] ); ?>
-                </button>
-
                 <!-- Modal -->
                 <div class="modal fade custom-modal" id="<?php echo esc_attr( $id_modal ); ?>" data-bs-keyboard="false" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
