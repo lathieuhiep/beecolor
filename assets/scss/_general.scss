@@ -76,6 +76,11 @@ p {
   }
 }
 
+.btn-check:focus+.btn,
+.btn:focus {
+  box-shadow: none;
+}
+
 figure {
   margin: 0;
 }

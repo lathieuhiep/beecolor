@@ -28,6 +28,7 @@ function beecolor_register_widget_elementor_addon( $widgets_manager ) {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-theme-2.php' );
 
     // template landing page
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/banner.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/introduce.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/product-popup.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/project-popup.php' );
@@ -35,6 +36,7 @@ function beecolor_register_widget_elementor_addon( $widgets_manager ) {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/warranty-check.php' );
 
 	// register add on
+    $widgets_manager->register( new \beecolor_widget_banner() );
     $widgets_manager->register( new \beecolor_widget_slides() );
     $widgets_manager->register( new \beecolor_widget_post_grid() );
     $widgets_manager->register( new \beecolor_widget_post_carousel() );

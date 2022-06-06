@@ -240,6 +240,20 @@
     }
   }
 
+  .element-introduce {
+    grid-template-columns: 1fr;
+
+    &__left {
+      .action-box {
+        text-align: center;
+      }
+    }
+
+    &__right {
+      display: none;
+    }
+  }
+
 }
 
 @media (min-width: 768px) {
@@ -290,6 +304,17 @@
   .custom-modal {
     .modal-dialog {
       max-width: 760px;
+    }
+  }
+
+  .element-banner {
+    height: 282px;
+
+    .btn-modal-popup {
+      bottom: 70px;
+      right: 192px;
+      padding: 8px 18px;
+      font-size: 12px;
     }
   }
 
