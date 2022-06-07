@@ -18,6 +18,14 @@ function beecolor_product_metaboxes() {
         'show_names'    => true,
     ) );
 
+    $cmb->add_field(array(
+        'name' => esc_html__('Ảnh nền', 'beecolor'),
+        'desc' => 'Upload an image or enter an URL.',
+        'id' => 'beecolor_product_background_image',
+        'type' => 'file',
+        'preview_size' => 'medium',
+    ));
+
     $cmb->add_field( array(
         'name'    => esc_html__( 'Tư vấn thi công', 'beecolor' ),
         'id'      => 'beecolor_product_construction_consultant',
