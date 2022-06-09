@@ -354,6 +354,13 @@ pre {
 
 /* Custom tab */
 .custom-tab {
+  nav {
+    position: sticky;
+    top: -16px;
+    z-index: 2;
+    background-color: #ffffff;
+  }
+
   .nav-tabs {
     .nav-link {
       margin-right: 2px;

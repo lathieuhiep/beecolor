@@ -361,24 +361,35 @@ class beecolor_widget_product_popup extends Widget_Base
 
             <div class="element-product-popup">
                 <div class="custom-owl-carousel custom-equal-height-owl owl-carousel owl-theme" data-settings-owl='<?php echo wp_json_encode($data_settings_owl); ?>'>
-                    <?php while ($query->have_posts()): $query->the_post(); ?>
+                    <?php
+                    while ($query->have_posts()):
+                        $query->the_post();
+
+                    $background_image = get_post_meta( get_the_ID(), 'beecolor_product_background_image', true );
+                    ?>
 
                         <div class="item-post item-product-popup" data-product-id="<?php echo esc_attr( get_the_ID() ); ?>">
-                            <div class="item-post__thumbnail">
-                                <?php
-                                if (has_post_thumbnail()) :
-                                    the_post_thumbnail('large');
-                                else:
-                                ?>
-                                    <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>" alt="<?php the_title(); ?>"/>
-                                <?php endif; ?>
+                            <div class="item-post__box">
+                                <div class="item-post__overlay">
+                                    <?php if ( $background_image ) : ?>
+                                        <img src="<?php echo esc_url( $background_image ); ?>" alt="">
+                                    <?php endif; ?>
+                                </div>
+
+                                <div class="item-post__thumbnail">
+                                    <?php
+                                    if (has_post_thumbnail()) :
+                                        the_post_thumbnail('large');
+                                    else:
+                                        ?>
+                                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>" alt="<?php the_title(); ?>"/>
+                                    <?php endif; ?>
+                                </div>
                             </div>
 
-                            <div class="item-post__content">
-                                <h2 class="item-post__title">
-                                    <?php the_title(); ?>
-                                </h2>
-                            </div>
+                            <h2 class="item-post__title">
+                                <?php the_title(); ?>
+                            </h2>
                         </div>
 
                     <?php

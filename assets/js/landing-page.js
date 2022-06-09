@@ -13,7 +13,7 @@
             const product_id = item.data('product-id');
 
             product_item.addClass('pointer-events-none');
-            item.append('<div class="spinner-box"><div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div></div>');
+            item.append('<div class="spinner-box"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>');
 
             $.ajax({
                 url: beecolor_landing_page.url,
