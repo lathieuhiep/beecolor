@@ -63,9 +63,11 @@
 
 @media (min-width: 992px) {
 
-  .site-navigation_warp {
-    max-width: 1260px;
-    margin: 0 auto;
+  .site-header {
+    .container-fluid {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
   }
   .active-sticky-nav {
     position: sticky;

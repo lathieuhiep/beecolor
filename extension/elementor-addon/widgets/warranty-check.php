@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -99,62 +100,72 @@ class beecolor_widget_warranty_check extends Widget_Base {
 
         <div class="element-warranty-check">
             <div class="form-warranty">
-                <h3 class="title">
-                    <?php echo esc_html( $settings['title'] ); ?>
-                </h3>
+                <div class="form-warranty__box">
+                    <h3 class="title">
+                        <?php echo esc_html( $settings['title'] ); ?>
+                    </h3>
 
-                <form method="post" class="search-warranty" action="">
-                    <label for="search-warranty">
-                        <?php esc_html_e('Nhập số điện thoại hoặc mã đơn hàng', 'beecolor'); ?>
-                    </label>
+                    <form method="post" class="search-warranty" action="">
+                        <label for="search-warranty">
+                            <?php esc_html_e('Nhập số điện thoại hoặc mã đơn hàng', 'beecolor'); ?>
+                        </label>
 
-                    <input type="search" id="search-warranty" class="form-control phone-code" value="" name="phone-code" />
+                        <input type="search" id="search-warranty" class="form-control phone-code" value="" name="phone-code" />
 
-                    <div class="g-recaptcha" data-sitekey="<?php echo esc_attr( $site_key ); ?>"></div>
+                        <div class="action-box text-center">
+                            <div class="box-recaptcha">
+                                <div class="g-recaptcha" data-sitekey="<?php echo esc_attr( $site_key ); ?>"></div>
+                            </div>
 
-                    <div class="action-box text-center">
-                        <button type="submit" class="search-submit">
-                            <?php esc_html_e('Kiểm tra bảo hành', 'beecolor'); ?>
-                        </button>
-                    </div>
-                </form>
+                            <button type="submit" class="search-submit">
+                                <?php esc_html_e('Kiểm tra bảo hành', 'beecolor'); ?>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div class="conditions">
-                <h4 class="conditions__title">
-                    <?php echo esc_html( $settings['title_conditions'] ); ?>
-                </h4>
+                <div class="conditions__overlay"></div>
 
-                <?php if ( $modal_desc ) : ?>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-view-more" data-bs-toggle="modal" data-bs-target="#<?php echo esc_attr( $id_modal ); ?>">
-                        <?php esc_html_e('Tìm hiểu thêm', 'beecolor'); ?>
-                    </button>
+                <div class="box-content d-inline-flex flex-column">
+                    <h4 class="conditions__title">
+                        <?php echo esc_html( $settings['title_conditions'] ); ?>
+                    </h4>
 
-                    <!-- Modal -->
-                    <div class="modal fade custom-modal" id="<?php echo esc_attr( $id_modal ); ?>" data-bs-keyboard="false" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="staticBackdropLabel">
-                                        <?php esc_html_e('ĐIỀU KIỆN BẢO HÀNH', 'beecolor'); ?>
-                                    </h4>
+                    <?php if ( $modal_desc ) : ?>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary btn-view-more" data-bs-toggle="modal" data-bs-target="#<?php echo esc_attr( $id_modal ); ?>">
+                            <?php esc_html_e('Tìm hiểu thêm', 'beecolor'); ?>
+                        </button>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
 
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
+        <?php if ( $modal_desc ) : ?>
 
-                                <div class="modal-body">
-                                    <?php echo wp_kses_post( $settings['modal_desc'] ); ?>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Modal -->
+        <div class="modal fade custom-modal" id="<?php echo esc_attr( $id_modal ); ?>" data-bs-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">
+                            <?php esc_html_e('ĐIỀU KIỆN BẢO HÀNH', 'beecolor'); ?>
+                        </h4>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                <?php endif; ?>
+
+                    <div class="modal-body">
+                        <?php echo wp_kses_post( $settings['modal_desc'] ); ?>
+                    </div>
+                </div>
             </div>
         </div>
 
     <?php
-
+        endif;
     }
 
 }
