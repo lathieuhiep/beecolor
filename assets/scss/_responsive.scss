@@ -4,6 +4,13 @@
     max-width: 1200px;
   }
 
+  .site-header {
+    .container-fluid {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
+  }
+
 }
 
 @media (max-width: 1199px) {
@@ -11,11 +18,19 @@
   .container {
     max-width: none;
   }
+
   .element-post-carousel {
     .owl-carousel {
       .owl-nav {
         display: none;
       }
+    }
+  }
+
+  .site-header {
+    .container-fluid {
+      padding-left: 12px;
+      padding-right: 12px;
     }
   }
 
@@ -54,6 +69,7 @@
       li {
         a {
           padding: 0 7px;
+          font-size: 14px;
         }
       }
     }
@@ -63,12 +79,6 @@
 
 @media (min-width: 992px) {
 
-  .site-header {
-    .container-fluid {
-      padding-left: 70px;
-      padding-right: 70px;
-    }
-  }
   .active-sticky-nav {
     position: sticky;
     top: 0;
@@ -306,17 +316,6 @@
   .custom-modal {
     .modal-dialog {
       max-width: 760px;
-    }
-  }
-
-  .element-banner {
-    height: 282px;
-
-    .btn-modal-popup {
-      bottom: 70px;
-      right: 192px;
-      padding: 8px 18px;
-      font-size: 12px;
     }
   }
 
