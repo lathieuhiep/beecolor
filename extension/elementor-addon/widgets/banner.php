@@ -162,9 +162,9 @@ class beecolor_widget_banner extends Widget_Base {
     ?>
 
         <div class="element-banner">
-            <div class="row row-cols-1 row-cols-lg-2">
+            <div class="row row-cols-1 row-cols-sm-2 align-items-center align-items-lg-start">
                 <div class="col">
-                    <div class="image-left d-none d-lg-block"></div>
+                    <div class="image-left"></div>
                 </div>
 
                 <div class="col">

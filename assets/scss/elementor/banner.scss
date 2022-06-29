@@ -1,5 +1,6 @@
 .element-banner {
   position: relative;
+  padding-bottom: 50px;
 
   &__content {
     position: relative;
@@ -16,7 +17,6 @@
     background-position: -10px center;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-bottom: 50px;
   }
 
   .box-right {
@@ -98,7 +98,7 @@
         margin-bottom: 36px;
         display: grid;
         grid-gap: 24px;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
         @include align-items(center);
 
         .item {
@@ -134,14 +134,10 @@
       top: 0;
       margin: 0 auto;
     }
-
-    @media (max-width: 767px) {
-      max-width: none;
-    }
   }
 
   .btn-modal-popup {
-    padding: 6px 50px;
+    padding: 8px 50px 6px;
     font-size: 22px;
     font-weight: 500;
     border: none;
@@ -159,45 +155,6 @@
 
       .line-bottom {
         right: 10px;
-      }
-    }
-  }
-
-  @media (min-width: 480px) and (max-width: 767px) {
-    .box-right {
-      .content {
-        .title {
-          font-size: 40px;
-        }
-
-        .desc {
-          font-size: 30px;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 479px) {
-    .box-right {
-      .content {
-        .title {
-          font-size: 36px;
-        }
-
-        .desc {
-          font-size: 24px;
-        }
-
-        .list {
-          grid-row-gap: 12px;
-          grid-template-columns: 1fr;
-
-          .item {
-            &:after {
-              display: none;
-            }
-          }
-        }
       }
     }
   }
